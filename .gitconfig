@@ -1,0 +1,18 @@
+[alias]
+	s = status
+	d = difftool
+	a = add --all
+	ds = difftool
+	c = commit
+	ap = add --all -p
+	b = branch -vv
+[commit]
+	gpgsign = true
+[diff]
+	tool = meld
+[merge]
+	tool = meld
+[user]
+	name = Marek Dědič
+	signingkey = CE157DD2
+	email = developer@dedic.eu
