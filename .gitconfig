@@ -2,10 +2,11 @@
 	s = status
 	d = difftool
 	a = add --all
-	ds = difftool
-	c = commit
+	ds = difftool --staged
+	c = commit -m
 	ap = add --all -p
 	b = branch -vv
+	tree-sha1 = log --pretty=format:'%T %s'
 [commit]
 	gpgsign = true
 [diff]
