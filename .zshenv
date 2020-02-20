@@ -7,6 +7,7 @@ alias ll='ls -l'
 alias up='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean && sudo npm -g update && upgrade_oh_my_zsh && vim -c PlugUpgrade\|PlugUpdate\|q\|q && rustup update && cargo install-update -a'
 alias vi='nvim'
 alias vim='nvim'
+alias vimdiff='nvim -d'
 alias nautilus='nohup nautilus . &>/dev/null &;disown'
 alias julia='julia --project'
 
