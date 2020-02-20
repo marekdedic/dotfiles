@@ -7,6 +7,7 @@
 	ap = add --all -p
 	b = branch -vv
 	tree-sha1 = log --pretty=format:'%T %s'
+	r = remote -v
 [commit]
 	gpgsign = true
 [diff]
