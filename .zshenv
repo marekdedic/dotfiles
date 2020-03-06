@@ -10,6 +10,7 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias nautilus='nohup nautilus . &>/dev/null &;disown'
 alias julia='julia --project'
+alias python='pipenv run python'
 
 bindkey '^H' backward-kill-word # Ctrl-backspace
 
