@@ -30,3 +30,14 @@ POWERLEVEL9K_ETC_ICON=''
 POWERLEVEL9K_VCS_UNTRACKED_ICON='\uF128'
 POWERLEVEL9K_VCS_UNSTAGED_ICON='\uF111'
 POWERLEVEL9K_VCS_STAGED_ICON='\uF067'
+
+function mv() {
+  if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
+    command mv "$@"
+    return
+  fi
+
+  newfilename="$1"
+  vared newfilename
+  command mv -v -- "$1" "$newfilename"
+}
