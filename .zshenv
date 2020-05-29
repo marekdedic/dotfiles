@@ -17,6 +17,9 @@ bindkey '^H' backward-kill-word # Ctrl-backspace
 export EDITOR=nvim
 export VISUAL=$EDITOR
 
+# Suffix aliases
+alias -s {jl,}=vim
+
 export JULIA_NUM_THREADS=8
 
 export FZF_DEFAULT_COMMAND='rg --files'
