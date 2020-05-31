@@ -100,3 +100,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
