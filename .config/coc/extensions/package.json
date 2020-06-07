@@ -1,1 +1,5 @@
-{"dependencies":{}}
+{
+  "dependencies": {
+    "coc-texlab": ">=2.1.0"
+  }
+}
