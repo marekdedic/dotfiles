@@ -44,3 +44,14 @@ function mv() {
   vared newfilename
   command mv -v -- "$1" "$newfilename"
 }
+
+function cp() {
+  if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
+    command cp "$@"
+    return
+  fi
+
+  newfilename="$1"
+  vared newfilename
+  command cp -v -- "$1" "$newfilename"
+}
