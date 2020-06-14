@@ -18,3 +18,5 @@
 	name = Marek Dědič
 	signingkey = CE157DD2
 	email = developer@dedic.eu
+[pull]
+	rebase = false
