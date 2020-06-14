@@ -18,6 +18,7 @@ export EDITOR=nvim
 export VISUAL=$EDITOR
 
 # Suffix aliases
+alias -s {pdf,}=evince
 alias -s {jl,js,md,php,tex,ts}=vim
 
 export JULIA_NUM_THREADS=8
