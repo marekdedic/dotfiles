@@ -54,5 +54,5 @@ function cp() {
 
   newfilename="$1"
   vared newfilename
-  command cp -v -- "$1" "$newfilename"
+  command cp -v -r -- "$1" "$newfilename"
 }
