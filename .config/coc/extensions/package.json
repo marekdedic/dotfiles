@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "coc-julia": ">=0.1.1",
+    "coc-julia": ">=0.2.0",
     "coc-python": ">=1.2.12",
     "coc-texlab": ">=2.1.0",
-    "coc-tsserver": ">=1.5.2"
+    "coc-tsserver": ">=1.5.7"
   }
 }
