@@ -76,4 +76,4 @@ let g:gitgutter_sign_removed_first_line = '•'
 let g:gitgutter_sign_modified_removed = '•'
 set updatetime=250
 let g:ale_sign_column_always = 1
-let g:default_julia_version = '1.1'
+let g:default_julia_version = '1.5'
