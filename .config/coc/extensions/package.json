@@ -1,9 +1,9 @@
 {
   "dependencies": {
-    "coc-julia": ">=0.5.1",
+    "coc-julia": ">=0.6.0",
     "coc-phpls": ">=2.1.10",
     "coc-python": ">=1.2.13",
     "coc-texlab": ">=2.3.0",
-    "coc-tsserver": ">=1.6.1"
+    "coc-tsserver": ">=1.6.3"
   }
 }
