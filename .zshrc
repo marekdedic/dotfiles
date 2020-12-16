@@ -109,5 +109,11 @@ source $ZSH/oh-my-zsh.sh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+if [[ ! -d "$ZSH/completions" || ! -f "$ZSH/completions/_gh" ]]; then
+    mkdir -pv $ZSH/completions
+    gh completion --shell zsh > $ZSH/completions/_gh
+    echo "gh added completions: gh completion --shell zsh > $ZSH/completions/_gh"
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
