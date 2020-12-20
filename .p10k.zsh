@@ -357,6 +357,7 @@
 
   # Branch icon. Set this parameter to '\uF126 ' for the popular Powerline branch icon.
   typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='\uF126 '
+  typeset -g POWERLEVEL9K_VCS_TAG_ICON=' \uF02B '
 
   typeset -g POWERLEVEL9K_VCS_COMMITS_BEHIND_ICON='\uF01A '
   typeset -g POWERLEVEL9K_VCS_COMMITS_AHEAD_ICON='\uF01B '
@@ -406,14 +407,14 @@
     if [[ -n $VCS_STATUS_TAG
           # Show tag only if not on a branch.
           # Tip: To always show tag, delete the next line.
-          && -z $VCS_STATUS_LOCAL_BRANCH  # <-- this line
+          # && -z $VCS_STATUS_LOCAL_BRANCH  # <-- this line
         ]]; then
       local tag=${(V)VCS_STATUS_TAG}
       # If tag name is at most 32 characters long, show it in full.
       # Otherwise show the first 12 … the last 12.
       # Tip: To always show tag name in full without truncation, delete the next line.
       (( $#tag > 32 )) && tag[13,-13]="…"  # <-- this line
-      res+="${meta}#${clean}${tag//\%/%%}"
+      res+="${clean}${(g::)POWERLEVEL9K_VCS_TAG_ICON}${tag//\%/%%}"
     fi
 
     # Display the current Git commit if there is no branch and no tag.
