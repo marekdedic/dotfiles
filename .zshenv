@@ -4,7 +4,18 @@ export ANDROID_HOME="$HOME/AndroidSDK"
 alias rm='trash'
 alias ls='ls --color=auto'
 alias ll='ls -l'
-alias up='sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get autoclean && sudo npm -g update && $HOME/.tmux/plugins/tpm/bin/update_plugins all && omz update && vim -c PlugUpgrade\|PlugUpdate\|CocUpdateSync\|qa && rustup update && cargo install-update -a'
+alias up='
+	sudo apt-get update &&
+	sudo apt-get upgrade -y &&
+	sudo apt-get autoremove -y &&
+	sudo apt-get autoclean &&
+	sudo npm -g update &&
+	$HOME/.tmux/plugins/tpm/bin/update_plugins all &&
+	omz update &&
+	git -C $HOME/.oh-my-zsh/custom/themes/powerlevel10k pull
+	vim -c PlugUpgrade\|PlugUpdate\|CocUpdateSync\|qa &&
+	rustup update &&
+	cargo install-update -a'
 alias vi='nvim'
 alias vim='nvim'
 alias vimdiff='nvim -d'
