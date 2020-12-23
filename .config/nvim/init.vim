@@ -1,6 +1,8 @@
 set nocompatible
 filetype off
 
+let g:polyglot_disabled = ['autoindent']
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
