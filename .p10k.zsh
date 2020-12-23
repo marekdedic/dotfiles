@@ -366,7 +366,7 @@
   typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON='\uF111 '
   # Untracked files icon. It's really a question mark, your font isn't broken.
   # Change the value of this parameter to show a different icon.
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON='\uF128'
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON='\uF128 '
 
   # Formatter for Git status.
   #
