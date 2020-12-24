@@ -106,7 +106,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+source $HOME/.cargo/registry/src/github.com-*/skim-*/shell/completion.zsh
+source $HOME/.cargo/registry/src/github.com-*/skim-*/shell/key-bindings.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [[ ! -d "$ZSH/completions" || ! -f "$ZSH/completions/_gh" ]]; then

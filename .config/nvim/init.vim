@@ -16,9 +16,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'joom/latex-unicoder.vim'
 Plug 'jpalardy/vim-slime'
 Plug 'JuliaEditorSupport/julia-vim'
-Plug 'junegunn/fzf.vim'
-
-source /usr/share/doc/fzf/examples/fzf.vim
+Plug 'lotabout/skim'
 
 call plug#end()
 
@@ -48,7 +46,7 @@ if has('persistent_undo')
 endif
 autocmd BufWritePost * if &diff == 1 | diffupdate | endif
 
-map <C-T> :Rg<CR>
+map <C-T> :SK<CR>
 
 vnoremap <C-X> "+x
 vnoremap <C-C> "+y
