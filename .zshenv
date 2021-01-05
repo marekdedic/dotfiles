@@ -33,8 +33,8 @@ alias -s {css,html,jl,js,md,php,py,svelte,tex,ts,txt,vue}=vim
 
 export JULIA_NUM_THREADS=8
 
-export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export SKIM_DEFAULT_COMMAND='rg --files'
+export SKIM_CTRL_T_COMMAND=$SKIM_DEFAULT_COMMAND
 
 function mv() {
   if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
