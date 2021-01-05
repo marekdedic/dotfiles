@@ -33,9 +33,11 @@ alias -s {css,html,jl,js,md,php,py,svelte,tex,ts,txt,vue}=vim
 
 export JULIA_NUM_THREADS=8
 
+# Skim configuration (Ctrl+T fuzzy find)
 export SKIM_DEFAULT_COMMAND='rg --files'
 export SKIM_CTRL_T_COMMAND=$SKIM_DEFAULT_COMMAND
 
+# 1-parameter mv and cp
 function mv() {
   if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
     command mv "$@"
