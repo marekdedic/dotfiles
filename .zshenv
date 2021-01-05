@@ -13,7 +13,7 @@ alias up='
 	$HOME/.tmux/plugins/tpm/bin/update_plugins all &&
 	omz update &&
 	git -C $HOME/.oh-my-zsh/custom/themes/powerlevel10k pull
-	vim -c PlugUpgrade\|PlugUpdate\|CocUpdateSync\|qa &&
+	vim -c PlugUpgrade\|PlugUpdate\|qa &&
 	rustup update &&
 	cargo install-update -a'
 alias vi='nvim'
