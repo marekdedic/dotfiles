@@ -2,8 +2,6 @@ export PATH="$HOME/.cargo/bin:$HOME/.config/composer/vendor/bin/:$HOME/.local/bi
 export ANDROID_HOME="$HOME/AndroidSDK"
 
 alias rm='trash'
-alias ls='ls --color=auto'
-alias ll='ls -l'
 alias up='
 	sudo apt-get update &&
 	sudo apt-get upgrade -y &&
