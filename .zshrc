@@ -110,12 +110,6 @@ source $HOME/.cargo/registry/src/github.com-*/skim-*/shell/completion.zsh
 source $HOME/.cargo/registry/src/github.com-*/skim-*/shell/key-bindings.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-if [[ ! -d "$ZSH/completions" || ! -f "$ZSH/completions/_gh" ]]; then
-    mkdir -pv $ZSH/completions
-    gh completion --shell zsh > $ZSH/completions/_gh
-    echo "gh added completions: gh completion --shell zsh > $ZSH/completions/_gh"
-fi
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -133,3 +127,6 @@ unset __conda_setup
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+alias ls='exa'
+alias ll='exa --long --group --git'
