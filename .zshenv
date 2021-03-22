@@ -28,7 +28,7 @@ export VISUAL=$EDITOR
 
 # Suffix aliases
 alias -s {pdf,}=evince
-alias -s {css,html,jl,js,md,php,py,svelte,tex,ts,txt,vue}=vim
+alias -s {css,html,jl,js,md,php,py,scss,svelte,tex,ts,txt,vue}=vim
 
 export JULIA_NUM_THREADS=8
 
