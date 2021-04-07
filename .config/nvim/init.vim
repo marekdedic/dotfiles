@@ -24,6 +24,7 @@ Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
 Plug 'coc-extensions/coc-svelte', {'do': 'yarn install --frozen-lockfile'}
 Plug 'fannheyward/coc-texlab', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
 
