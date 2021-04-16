@@ -20,6 +20,8 @@
 	email = developer@dedic.eu
 [pull]
 	rebase = false
+[init]
+	defaultBranch = master
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
