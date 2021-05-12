@@ -13,7 +13,7 @@ alias up='
 	vim -c PlugUpgrade\|PlugUpdate\|qa &&
 	rustup update &&
 	cargo install-update -a &&
-	conda update conda -y &&
+	sudo env "PATH=$PATH" conda update conda -y &&
 	omz update'
 alias vi='nvim'
 alias vim='nvim'
