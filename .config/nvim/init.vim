@@ -6,7 +6,7 @@ let g:polyglot_disabled = ['autoindent']
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 Plug 'haya14busa/incsearch.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
@@ -67,6 +67,7 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
+autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
