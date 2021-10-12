@@ -1,22 +1,19 @@
 set nocompatible
 filetype off
 
-let g:polyglot_disabled = ['autoindent']
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mg979/vim-visual-multi'
 Plug 'haya14busa/incsearch.vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-sleuth'
 Plug 'joom/latex-unicoder.vim'
 Plug 'jpalardy/vim-slime'
-Plug 'JuliaEditorSupport/julia-vim'
 Plug 'lotabout/skim'
+Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
 
 Plug 'fannheyward/coc-julia', {'do': 'yarn install --frozen-lockfile'}
 Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
@@ -31,7 +28,6 @@ call plug#end()
 set laststatus=2
 set t_Co=256
 
-syntax on
 set number
 set relativenumber
 set tabstop=4
@@ -54,6 +50,16 @@ if has('persistent_undo')
 endif
 autocmd BufWritePost * if &diff == 1 | diffupdate | endif
 
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+}
+EOF
+
 map <C-T> :SK<CR>
 
 vnoremap <C-X> "+x
@@ -73,8 +79,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-let g:rustfmt_autosave=1
-let g:tex_flavor = "latex"
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 let g:gitgutter_max_signs = 1024
@@ -85,4 +89,3 @@ let g:gitgutter_sign_removed_first_line = '•'
 let g:gitgutter_sign_modified_removed = '•'
 set updatetime=250
 let g:ale_sign_column_always = 1
-let g:default_julia_version = '1.5'
