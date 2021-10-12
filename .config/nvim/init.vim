@@ -15,6 +15,7 @@ Plug 'jpalardy/vim-slime'
 Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 nnoremap <C-T> <cmd>Telescope git_files<cr>
 nnoremap <C-G> <cmd>Telescope live_grep<cr>
@@ -58,9 +59,8 @@ lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
   highlight = {
-    enable = true,
-    disable = {},
-  },
+    enable = true
+  }
 }
 EOF
 
