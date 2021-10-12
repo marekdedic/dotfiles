@@ -12,8 +12,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-sleuth'
 Plug 'joom/latex-unicoder.vim'
 Plug 'jpalardy/vim-slime'
-Plug 'lotabout/skim'
 Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+nnoremap <C-T> <cmd>Telescope git_files<cr>
+nnoremap <C-G> <cmd>Telescope live_grep<cr>
 
 Plug 'fannheyward/coc-julia', {'do': 'yarn install --frozen-lockfile'}
 Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
@@ -60,9 +64,6 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-map <C-T> :SK<CR>
-
-vnoremap <C-X> "+x
 vnoremap <C-C> "+y
 
 let g:slime_target = "tmux"
