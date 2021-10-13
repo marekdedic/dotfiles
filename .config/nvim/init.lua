@@ -57,7 +57,7 @@ Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
 Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 Plug('kyazdani42/nvim-web-devicons')
-vim.api.nvim_set_keymap('n', '<C-T>', '<Cmd>Telescope git_files<CR>', {}) -- Ctrl-T to pick by file name
+vim.api.nvim_set_keymap('n', '<C-T>', '<Cmd> lua project_files()<CR>', {}) -- Ctrl-T to pick by file name
 vim.api.nvim_set_keymap('n', '<C-G>', '<Cmd>Telescope live_grep<CR>', {}) -- Ctrl-G to pick by file contents
 
 vim.call('plug#end')
@@ -101,3 +101,7 @@ require('telescope').setup({
   }
 })
 require('telescope').load_extension('fzf')
+project_files = function() -- git_files picker with fallback to find_files when not inside a git repo
+  local ok = pcall(require'telescope.builtin'.git_files, {})
+  if not ok then require'telescope.builtin'.find_files({}) end
+end
