@@ -79,7 +79,7 @@ vim.o.splitright = true
 -- Undo history is not erased when vim is closed
 if vim.fn.has('persistent_undo') == 1 then
 	vim.o.undofile = true
-	vim.o.undodir = '$HOME/.vim/undo'
+	vim.o.undodir = os.getenv("HOME") .. '/.vim/undo'
 end
 
 require('nvim-treesitter.configs').setup({
