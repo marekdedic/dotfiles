@@ -1,6 +1,6 @@
 local Plug = vim.fn['plug#']
 
-vim.call('plug#begin', '~/.vim/plugged')
+vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
 
 Plug('nvim-treesitter/nvim-treesitter', {branch = '0.5-compat', ['do'] = ':TSUpdate'}) -- Syntax highlighting
 Plug('mg979/vim-visual-multi') -- Multiple cursors
