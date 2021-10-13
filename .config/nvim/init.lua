@@ -4,8 +4,13 @@ vim.call('plug#begin', '~/.vim/plugged')
 
 Plug('nvim-treesitter/nvim-treesitter', {branch = '0.5-compat', ['do'] = ':TSUpdate'}) -- Syntax highlighting
 Plug('mg979/vim-visual-multi') -- Multiple cursors
-Plug('tpope/vim-sleuth') -- Automatically set tab width
 Plug('joom/latex-unicoder.vim') -- Ctrl-L converts latex code to actual symbols, as in \alpha -> α
+
+-- Automatically set tab width with defaults being tabs of width 4
+Plug('tpope/vim-sleuth')
+vim.o.expandtab = false
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 
 -- Code completion
 Plug('neoclide/coc.nvim', {branch = 'release'})
@@ -83,9 +88,3 @@ require('nvim-treesitter.configs').setup({
     enable = true
   }
 })
-
--- TODO HERE BE DRAGONS
-
---set t_Co=256
---set tabstop=4
---set shiftwidth=4
