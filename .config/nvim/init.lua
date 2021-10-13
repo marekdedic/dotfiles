@@ -90,4 +90,14 @@ require('nvim-treesitter.configs').setup({
   }
 })
 
+local actions = require('telescope.actions')
+require('telescope').setup({
+  defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close -- Esc closes the picker right away (instead of going to normal mode first)
+      },
+    },
+  }
+})
 require('telescope').load_extension('fzf')
