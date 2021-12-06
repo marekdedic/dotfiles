@@ -1,8 +1,8 @@
 [alias]
 	s = status
-	d = difftool
+	d = difftool --dir-diff
 	a = add --all
-	ds = difftool --staged
+	ds = difftool --dir-diff --staged
 	c = commit -m
 	ap = add --all -p
 	b = branch -vv
