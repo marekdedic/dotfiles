@@ -57,7 +57,7 @@ Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
 Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 Plug('kyazdani42/nvim-web-devicons')
-vim.api.nvim_set_keymap('n', '<C-T>', '<Cmd> lua project_files()<CR>', {}) -- Ctrl-T to pick by file name
+vim.api.nvim_set_keymap('n', '<C-T>', '<Cmd>lua project_files()<CR>', {}) -- Ctrl-T to pick by file name
 vim.api.nvim_set_keymap('n', '<C-G>', '<Cmd>Telescope live_grep<CR>', {}) -- Ctrl-G to pick by file contents
 
 vim.call('plug#end')
