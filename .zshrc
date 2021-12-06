@@ -128,6 +128,9 @@ unset __conda_setup
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Enable direnv
+eval "$(direnv hook zsh)"
+
 alias ls='exa'
 alias ll='exa --long --group --git'
 alias la='ll -a'
