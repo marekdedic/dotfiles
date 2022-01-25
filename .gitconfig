@@ -12,8 +12,10 @@
 	gpgsign = true
 [diff]
 	tool = meld
+	algorithm = histogram
 [merge]
 	tool = meld
+	conflictStyle = zdiff3
 [user]
 	name = Marek Dědič
 	signingkey = CE157DD2
