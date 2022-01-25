@@ -29,6 +29,7 @@ vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', {}) -- go to refere
 -- Linters
 Plug('w0rp/ale')
 vim.g.ale_sign_column_always = 1
+vim.g.ale_disable_lsp = 1
 
 -- git changes next to line numbers
 Plug('airblade/vim-gitgutter')
