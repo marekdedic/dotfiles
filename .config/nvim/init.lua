@@ -2,7 +2,7 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
 
-Plug('nvim-treesitter/nvim-treesitter', {branch = '0.5-compat', ['do'] = ':TSUpdate'}) -- Syntax highlighting
+Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'}) -- Syntax highlighting
 Plug('mg979/vim-visual-multi') -- Multiple cursors
 Plug('joom/latex-unicoder.vim') -- Ctrl-L converts latex code to actual symbols, as in \alpha -> α
 
@@ -55,7 +55,7 @@ vim.g.slime_dont_ask_default = 1
 
 -- Fuzzy searching with Telescope
 Plug('nvim-lua/plenary.nvim')
-Plug('nvim-telescope/telescope.nvim', {commit = "80cdb00"})
+Plug('nvim-telescope/telescope.nvim')
 Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 Plug('kyazdani42/nvim-web-devicons')
 vim.api.nvim_set_keymap('n', '<C-T>', '<Cmd>lua project_files()<CR>', {}) -- Ctrl-T to pick by file name
