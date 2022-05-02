@@ -55,7 +55,7 @@ vim.g.slime_dont_ask_default = 1
 
 -- Fuzzy searching with Telescope
 Plug('nvim-lua/plenary.nvim')
-Plug('nvim-telescope/telescope.nvim')
+Plug('nvim-telescope/telescope.nvim', {tag = "nvim-0.6"})
 Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 Plug('kyazdani42/nvim-web-devicons')
 vim.api.nvim_set_keymap('n', '<C-T>', '<Cmd>lua project_files()<CR>', {}) -- Ctrl-T to pick by file name
@@ -85,7 +85,7 @@ if vim.fn.has('persistent_undo') == 1 then
 end
 
 require('nvim-treesitter.configs').setup({
-  ensure_installed = "maintained", -- Installs all maintained language parsers
+  ensure_installed = "all", -- Installs all language parsers
   highlight = {
     enable = true
   }
