@@ -42,6 +42,9 @@ vim.g.gitgutter_sign_removed = ''
 vim.g.gitgutter_sign_removed_first_line = ''
 vim.g.gitgutter_sign_modified_removed = ''
 
+-- Use terminal colors
+vim.o.termguicolors = true
+
 -- Pretty statusline
 Plug('vim-airline/vim-airline')
 vim.g.airline_powerline_fonts = 1
