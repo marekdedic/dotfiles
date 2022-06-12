@@ -3,6 +3,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
 
 Plug('nvim-treesitter/nvim-treesitter', {commit = '394e7f8', ['do'] = ':TSUpdate'}) -- Syntax highlighting
+vim.g.tex_flavor = "latex" -- Treat ".tex" files as LaTeX by default
 Plug('mg979/vim-visual-multi') -- Multiple cursors
 Plug('joom/latex-unicoder.vim') -- Ctrl-L converts latex code to actual symbols, as in \alpha -> α
 
