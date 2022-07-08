@@ -18,7 +18,7 @@
 	conflictStyle = zdiff3
 [user]
 	name = Marek Dědič
-	signingkey = CE157DD2
+	signingkey = C23EEA30!
 	email = developer@dedic.eu
 [pull]
 	rebase = false
