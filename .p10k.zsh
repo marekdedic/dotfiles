@@ -416,7 +416,7 @@
       # Otherwise show the first 12 … the last 12.
       # Tip: To always show tag name in full without truncation, delete the next line.
       (( $#tag > 32 )) && tag[13,-13]="…"  # <-- this line
-      res+="${meta}#${clean}${(g::)POWERLEVEL9K_VCS_TAG_ICON}${tag//\%/%%}"
+      res+="${meta}${clean}${(g::)POWERLEVEL9K_VCS_TAG_ICON}${tag//\%/%%}"
     fi
 
     # Display the current Git commit if there is no branch and no tag.
