@@ -9,7 +9,7 @@ alias up='
 	sudo apt-get autoclean &&
 	sudo npm -g update &&
 	$HOME/.tmux/plugins/tpm/bin/update_plugins all &&
-	git -C $HOME/.oh-my-zsh/custom/themes/powerlevel10k pull
+	git -C $HOME/.oh-my-zsh/custom/themes/powerlevel10k pull &&
 	vim -c PlugUpgrade\|PlugUpdate\|qa &&
 	rustup update &&
 	cargo install-update -a &&
