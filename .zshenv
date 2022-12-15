@@ -10,7 +10,7 @@ alias up='
 	sudo npm -g update &&
 	$HOME/.tmux/plugins/tpm/bin/update_plugins all &&
 	git -C $HOME/.oh-my-zsh/custom/themes/powerlevel10k pull &&
-	vim -c PlugUpgrade\|PlugUpdate\\|TSUpdateSync|qa &&
+	vim -c PlugUpgrade\|PlugUpdate\|TSUpdateSync\|qa &&
 	rustup update &&
 	cargo install-update -a &&
 	sudo env "PATH=$PATH" conda update conda -y &&
