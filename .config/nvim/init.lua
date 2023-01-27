@@ -53,6 +53,14 @@ Plug('vim-airline/vim-airline')
 vim.g.airline_powerline_fonts = 1
 vim.g.airline_skip_empty_sections = 1
 
+-- Unified navigation between vim splits and tmux panes
+Plug('christoomey/vim-tmux-navigator')
+vim.g.tmux_navigator_no_mappings = 1
+vim.api.nvim_set_keymap('n', '<A-left>', '<Cmd>TmuxNavigateLeft<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-down>', '<Cmd>TmuxNavigateDown<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-up>', '<Cmd>TmuxNavigateUp<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-right>', '<Cmd>TmuxNavigateRight<CR>', { noremap = true, silent = true })
+
 -- Send commands to REPL
 Plug('jpalardy/vim-slime')
 vim.g.slime_target = "tmux"
