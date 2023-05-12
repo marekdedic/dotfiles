@@ -130,7 +130,3 @@ unset __conda_setup
 
 # Enable direnv
 eval "$(direnv hook zsh)"
-
-alias ls='exa'
-alias ll='exa --long --group --git'
-alias la='ll -a'
