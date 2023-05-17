@@ -39,6 +39,7 @@ Plug('airblade/vim-gitgutter')
 vim.api.nvim_command('highlight GitGutterAdd guifg=#009900 ctermfg=2')
 vim.api.nvim_command('highlight GitGutterChange guifg=#7BB2D9 ctermfg=4')
 vim.api.nvim_command('highlight GitGutterDelete guifg=#FF2222 ctermfg=1')
+vim.o.signcolumn = "yes"
 vim.g.gitgutter_sign_added = ''
 vim.g.gitgutter_sign_modified = ''
 vim.g.gitgutter_sign_removed = ''
