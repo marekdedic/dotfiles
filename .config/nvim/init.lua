@@ -25,9 +25,10 @@ Plug('neoclide/coc-css', {['do'] = 'yarn install --frozen-lockfile'})
 vim.keymap.set('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "<CR><c-r>=coc#on_enter()<CR>"', {silent = true, expr = true}) -- Enter selects current suggestion
 vim.api.nvim_create_autocmd("CursorHold", {command = "silent call CocActionAsync('highlight')"}) -- Automatically highlight all occurences of symbol under cursor
 vim.cmd("hi Pmenu ctermfg=white guibg=darkmagenta") -- Fix floating menu colors
-vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', {}) -- go to definition
-vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)', {}) -- go to implementation
-vim.keymap.set('n', 'gr', '<Plug>(coc-references)', {}) -- go to references
+vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', {}) -- Go to definition
+vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)', {}) -- Go to implementation
+vim.keymap.set('n', 'gr', '<Plug>(coc-references)', {}) -- Go to references
+vim.keymap.set('n', 'ft', ':call CocActionAsync("format")<CR>', {}) -- Format whole file
 
 -- Linters
 Plug('w0rp/ale')
