@@ -13,6 +13,7 @@ alias up='
 	sudo npm -g update &&
 	$HOME/.tmux/plugins/tpm/bin/update_plugins all &&
 	git -C $HOME/.oh-my-zsh/custom/themes/powerlevel10k pull &&
+	git -C $HOME/.config/alacritty/themes pull &&
 	vim -c PlugUpgrade\|PlugUpdate\|TSUpdateSync\|qa &&
 	rustup update &&
 	cargo install-update -a &&
