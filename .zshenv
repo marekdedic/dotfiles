@@ -36,9 +36,9 @@ alias -s {css,html,java,jl,js,md,php,py,scala,scss,svelte,tex,ts,tsx,txt,vue}=vi
 
 export JULIA_NUM_THREADS=8
 
-# Skim configuration (Ctrl+T fuzzy find)
-export SKIM_DEFAULT_COMMAND='rg --files'
-export SKIM_CTRL_T_COMMAND=$SKIM_DEFAULT_COMMAND
+# Fzf configuration (Ctrl+T fuzzy find)
+export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
 # 1-parameter mv and cp
 function mv() {
