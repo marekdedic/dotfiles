@@ -16,6 +16,7 @@ vim.o.shiftwidth = 4
 -- Code completion
 Plug('neoclide/coc.nvim', {branch = 'release'})
 Plug('fannheyward/coc-julia', {['do'] = 'yarn install --frozen-lockfile'})
+Plug('neoclide/coc-json', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('marlonfan/coc-phpls', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('fannheyward/coc-pyright', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('coc-extensions/coc-svelte', {['do'] = 'yarn install --frozen-lockfile'})
