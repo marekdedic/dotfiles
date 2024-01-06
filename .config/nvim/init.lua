@@ -72,7 +72,7 @@ vim.g.slime_dont_ask_default = 1
 
 -- Fuzzy searching with Telescope
 Plug('nvim-lua/plenary.nvim')
-Plug('nvim-telescope/telescope.nvim', {tag = "nvim-0.6"})
+Plug('nvim-telescope/telescope.nvim', {tag = "0.1.3"})
 Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 Plug('kyazdani42/nvim-web-devicons')
 vim.keymap.set('n', '<C-T>', '<Cmd>lua project_files()<CR>', {}) -- Ctrl-T to pick by file name
