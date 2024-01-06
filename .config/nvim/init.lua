@@ -24,7 +24,7 @@ Plug('fannheyward/coc-texlab', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('neoclide/coc-tsserver', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('neoclide/coc-css', {['do'] = 'yarn install --frozen-lockfile'})
 vim.api.nvim_set_keymap('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "<CR><c-r>=coc#on_enter()<CR>"', {silent = true, expr = true}) -- Enter selects current suggestion
-vim.api.nvim_command('autocmd CursorHold * call CocActionAsync(\'highlight\')') -- Automatically highlight all occurences of symbol under cursor
+vim.api.nvim_create_autocmd("CursorHold", {command = "silent call CocActionAsync('highlight')"}) -- Automatically highlight all occurences of symbol under cursor
 vim.cmd("hi Pmenu ctermfg=white guibg=darkmagenta") -- Fix floating menu colors
 vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', {}) -- Go to definition
 vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)', {}) -- Go to implementation
