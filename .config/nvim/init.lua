@@ -2,7 +2,7 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
 
-Plug('nvim-treesitter/nvim-treesitter', {commit = '8a1acc0', ['do'] = ':TSUpdate'}) -- Syntax highlighting
+Plug('nvim-treesitter/nvim-treesitter', {commit = '4cccb6f', ['do'] = ':TSUpdate'}) -- Syntax highlighting
 vim.g.tex_flavor = "latex" -- Treat ".tex" files as LaTeX by default
 Plug('mg979/vim-visual-multi') -- Multiple cursors
 Plug('joom/latex-unicoder.vim') -- Ctrl-L converts latex code to actual symbols, as in \alpha -> α
@@ -24,12 +24,12 @@ Plug('fannheyward/coc-texlab', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('neoclide/coc-tsserver', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('neoclide/coc-css', {['do'] = 'yarn install --frozen-lockfile'})
 vim.api.nvim_set_keymap('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "<CR><c-r>=coc#on_enter()<CR>"', {silent = true, expr = true}) -- Enter selects current suggestion
-vim.api.nvim_command('autocmd CursorHold * call CocActionAsync(\'highlight\')') -- Automatically highlight all occurences of symbol under cursor
+vim.api.nvim_create_autocmd("CursorHold", {command = "silent call CocActionAsync('highlight')"}) -- Automatically highlight all occurences of symbol under cursor
 vim.cmd("hi Pmenu ctermfg=white guibg=darkmagenta") -- Fix floating menu colors
-vim.api.nvim_set_keymap('n', 'gd', '<Plug>(coc-definition)', {}) -- go to definition
-vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', {}) -- go to implementation
-vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', {}) -- Go to references
-vim.api.nvim_set_keymap('n', 'ft', ':call CocActionAsync("format")<CR>', {}) -- Format whole file
+vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', {}) -- Go to definition
+vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)', {}) -- Go to implementation
+vim.keymap.set('n', 'gr', '<Plug>(coc-references)', {}) -- Go to references
+vim.keymap.set('n', 'ft', ':call CocActionAsync("format")<CR>', {}) -- Format whole file
 
 -- Linters
 Plug('w0rp/ale')
@@ -59,10 +59,10 @@ vim.g.airline_skip_empty_sections = 1
 -- Unified navigation between vim splits and tmux panes
 Plug('christoomey/vim-tmux-navigator')
 vim.g.tmux_navigator_no_mappings = 1
-vim.api.nvim_set_keymap('n', '<A-left>', '<Cmd>TmuxNavigateLeft<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-down>', '<Cmd>TmuxNavigateDown<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-up>', '<Cmd>TmuxNavigateUp<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-right>', '<Cmd>TmuxNavigateRight<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-left>', '<Cmd>TmuxNavigateLeft<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-down>', '<Cmd>TmuxNavigateDown<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-up>', '<Cmd>TmuxNavigateUp<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<A-right>', '<Cmd>TmuxNavigateRight<CR>', { noremap = true, silent = true })
 
 -- Send commands to REPL
 Plug('jpalardy/vim-slime')
@@ -72,11 +72,11 @@ vim.g.slime_dont_ask_default = 1
 
 -- Fuzzy searching with Telescope
 Plug('nvim-lua/plenary.nvim')
-Plug('nvim-telescope/telescope.nvim', {tag = "nvim-0.6"})
+Plug('nvim-telescope/telescope.nvim', {tag = "0.1.3"})
 Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 Plug('kyazdani42/nvim-web-devicons')
-vim.api.nvim_set_keymap('n', '<C-T>', '<Cmd>lua project_files()<CR>', {}) -- Ctrl-T to pick by file name
-vim.api.nvim_set_keymap('n', '<C-G>', '<Cmd>Telescope live_grep<CR>', {}) -- Ctrl-G to pick by file contents
+vim.keymap.set('n', '<C-T>', '<Cmd>lua project_files()<CR>', {}) -- Ctrl-T to pick by file name
+vim.keymap.set('n', '<C-G>', '<Cmd>Telescope live_grep<CR>', {}) -- Ctrl-G to pick by file contents
 
 vim.call('plug#end')
 
@@ -85,7 +85,7 @@ vim.o.cmdheight = 2 -- Status line accross 2 lines
 vim.o.mouse = 'a' -- Mouse click moves cursor
 vim.o.lazyredraw = true -- Faster macros
 vim.o.updatetime = 250 -- Time to recalculate git gutter and autosave after stopping typing (ms)
-vim.api.nvim_set_keymap('v', '<C-C>', '"+y', {}) -- Ctrl-C to copy to OS clipboard
+vim.keymap.set('v', '<C-C>', '"+y', {}) -- Ctrl-C to copy to OS clipboard
 
 -- Line numbering
 vim.o.number = true
