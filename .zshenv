@@ -40,6 +40,9 @@ export JULIA_NUM_THREADS=8
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
+# Workaround for docker bug
+export DOCKER_BUILDKIT=0
+
 # 1-parameter mv and cp
 function mv() {
   if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
