@@ -17,6 +17,8 @@ alias up='
 	vim -c "PlugUpgrade|PlugUpdate|execute \"TSUpdateSync\"|qa" &&
 	rustup update &&
 	cargo install-update -a &&
+	juliaup self update &&
+	juliaup update &&
 	sudo env "PATH=$PATH" conda update conda -y &&
 	omz update'
 alias vi='nvim'
