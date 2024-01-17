@@ -132,3 +132,12 @@ unset __conda_setup
 
 # Enable direnv
 eval "$(direnv hook zsh)"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/personal/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
