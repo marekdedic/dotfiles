@@ -51,6 +51,9 @@ vim.g.gitgutter_sign_modified_removed = ''
 -- Use terminal colors
 vim.o.termguicolors = true
 
+-- When breaking a line, start at the same indentation
+vim.o.breakindent = true
+
 -- Pretty statusline
 Plug('vim-airline/vim-airline')
 vim.g.airline_powerline_fonts = 1
