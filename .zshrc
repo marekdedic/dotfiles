@@ -141,3 +141,8 @@ path=("$HOME/.juliaup/bin" $path)
 export PATH
 
 # <<< juliaup initialize <<<
+
+# These need to be here, they get overriden in .zshenv
+alias ls='eza'
+alias ll='eza --long --group --git'
+alias la='ll -a'

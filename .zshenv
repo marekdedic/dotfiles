@@ -1,9 +1,6 @@
 export PATH="$HOME/.cargo/bin:$HOME/.config/composer/vendor/bin/:$HOME/.local/bin:$HOME/.local/bin/tunnel.sh:$PATH"
 export ANDROID_HOME="$HOME/AndroidSDK"
 
-alias ls='exa'
-alias ll='exa --long --group --git'
-alias la='ll -a'
 alias rm='trash'
 alias up='
 	sudo apt-get update &&
