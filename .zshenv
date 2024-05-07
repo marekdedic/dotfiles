@@ -1,5 +1,5 @@
 export PATH="$HOME/.cargo/bin:$HOME/.config/composer/vendor/bin/:$HOME/.local/bin:$HOME/.local/bin/tunnel.sh:$PATH"
-export ANDROID_HOME="$HOME/AndroidSDK"
+export ANDROID_HOME="/opt/android-sdk"
 
 alias rm='trash'
 alias up='
