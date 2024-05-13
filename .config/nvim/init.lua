@@ -27,6 +27,7 @@ vim.api.nvim_set_keymap('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "<
 vim.api.nvim_command('autocmd CursorHold * call CocActionAsync(\'highlight\')') -- Automatically highlight all occurences of symbol under cursor
 vim.cmd("hi Pmenu ctermfg=white guibg=darkmagenta") -- Fix floating menu colors
 vim.api.nvim_set_keymap('n', 'gd', '<Plug>(coc-definition)', {}) -- go to definition
+vim.api.nvim_set_keymap('n', 'gt', '<Plug>(coc-type-definition)', {}) -- go to definition
 vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', {}) -- go to implementation
 vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', {}) -- Go to references
 vim.api.nvim_set_keymap('n', 'ft', ':call CocActionAsync("format")<CR>', {}) -- Format whole file
