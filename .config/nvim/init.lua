@@ -14,7 +14,7 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 
 -- Code completion
-Plug('neoclide/coc.nvim', {branch = 'release'})
+Plug('neoclide/coc.nvim', {commit = 'c3ae5c3', ['do'] = 'npm ci'}) -- Change to {branch = 'release'} once on NeoVim 0.8
 Plug('fannheyward/coc-julia', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('neoclide/coc-json', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('marlonfan/coc-phpls', {['do'] = 'yarn install --frozen-lockfile'})
