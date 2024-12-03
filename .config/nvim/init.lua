@@ -2,7 +2,7 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
 
-Plug('nvim-treesitter/nvim-treesitter', {commit = '8a1acc0', ['do'] = ':TSUpdate'}) -- Syntax highlighting
+Plug('nvim-treesitter/nvim-treesitter', {commit = '377039d', ['do'] = ':TSUpdate'}) -- Syntax highlighting
 vim.g.tex_flavor = "latex" -- Treat ".tex" files as LaTeX by default
 Plug('mg979/vim-visual-multi') -- Multiple cursors
 Plug('joom/latex-unicoder.vim') -- Ctrl-L converts latex code to actual symbols, as in \alpha -> α
@@ -14,7 +14,7 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 
 -- Code completion
-Plug('neoclide/coc.nvim', {commit = 'c3ae5c3', ['do'] = 'npm ci'}) -- Change to {branch = 'release'} once on NeoVim 0.8
+Plug('neoclide/coc.nvim', {branch = 'release', ['do'] = 'npm ci'})
 Plug('fannheyward/coc-julia', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('neoclide/coc-json', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('marlonfan/coc-phpls', {['do'] = 'yarn install --frozen-lockfile'})
