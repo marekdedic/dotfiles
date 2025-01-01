@@ -16,7 +16,7 @@
 	algorithm = histogram
 [merge]
 	tool = meld
-	conflictStyle = diff3
+	conflictStyle = zdiff3
 [user]
 	name = Marek Dědič
 	signingkey = C23EEA30!
