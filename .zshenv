@@ -15,6 +15,7 @@ alias up='
 	cargo install-update -a &&
 	juliaup self update &&
 	juliaup update &&
+	pipx upgrade-all &&
 	sudo env "PATH=$PATH" conda update conda -y &&
 	omz update'
 alias vi='nvim'
