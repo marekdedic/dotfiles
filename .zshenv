@@ -16,6 +16,7 @@ alias up='
 	juliaup self update &&
 	juliaup update &&
 	pipx upgrade-all &&
+	uv tool upgrade --all &&
 	sudo env "PATH=$PATH" conda update conda -y &&
 	omz update'
 alias vi='nvim'
