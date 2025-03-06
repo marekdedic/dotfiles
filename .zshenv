@@ -17,7 +17,6 @@ alias up='
 	juliaup update &&
 	pipx upgrade-all &&
 	uv tool upgrade --all &&
-	sudo env "PATH=$PATH" conda update conda -y &&
 	omz update'
 alias vi='nvim'
 alias vim='nvim'
