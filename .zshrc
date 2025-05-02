@@ -122,7 +122,7 @@ eval "$(direnv hook zsh)"
 
 # !! Contents within this block are managed by juliaup !!
 
-path=("$HOME/.juliaup/bin" $path)
+path=('$HOME/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
