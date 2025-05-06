@@ -6,4 +6,4 @@ SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # period	delay	job-identifier	command
-1			10		backup			/home/personal/.backup.sh
+1			10		backup			/home/marekdedic/.backup.sh
