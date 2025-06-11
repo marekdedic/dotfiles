@@ -32,6 +32,12 @@ vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', {}) -- go to im
 vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', {}) -- Go to references
 vim.api.nvim_set_keymap('n', 'ft', ':call CocActionAsync("format")<CR>', {}) -- Format whole file
 
+-- Fix pyright workspace detection
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.py"},
+  command = "let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv']",
+})
+
 -- Linters
 Plug('w0rp/ale')
 vim.g.ale_sign_column_always = 1
