@@ -127,6 +127,9 @@ export PATH
 
 # <<< juliaup initialize <<<
 
+# Zoxide
+eval "$(zoxide init zsh)"
+
 # These need to be here, they get overriden in .zshenv
 alias ls='eza'
 alias ll='eza --long --group --git'
