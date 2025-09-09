@@ -34,8 +34,7 @@ alias -s {css,html,java,jl,js,json,latte,md,php,py,scala,scss,svelte,tex,ts,tsx,
 
 export JULIA_NUM_THREADS=8
 
-# Launch Zoxide in interactive mode
-alias z=zi
+# Configure Zoxide to use non-exact matching in interactive mode
 export _ZO_FZF_OPTS="--bind=ctrl-z:ignore,btab:up,tab:down --cycle --keep-right --border=sharp --height=45% --info=inline --layout=reverse --tabstop=2 --exit-0"
 
 # Fzf configuration (Ctrl+T fuzzy find)
