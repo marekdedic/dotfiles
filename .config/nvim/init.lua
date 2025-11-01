@@ -56,7 +56,7 @@ vim.g.gitgutter_sign_removed_first_line = ''
 vim.g.gitgutter_sign_modified_removed = ''
 
 -- Use terminal colors
-vim.o.termguicolors = true
+vim.o.termguicolors = false
 
 -- When breaking a line, start at the same indentation
 vim.o.breakindent = true
