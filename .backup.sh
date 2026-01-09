@@ -21,10 +21,10 @@ B2_DIR="$(uname -n)/$(whoami)"
 LOCAL_DIR=$HOME
 
 # Retention settings
-KEEP_BACKUPS_FOR="365D"
+KEEP_BACKUPS_FOR="90D"
 FULL_BACKUP_EVERY="30D"
 
-# Remove files older than 90 days
+# Remove older files
 duplicity \
  --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
  remove-older-than $KEEP_BACKUPS_FOR --force \
