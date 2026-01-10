@@ -24,25 +24,25 @@ LOCAL_DIR=$HOME
 KEEP_BACKUPS_FOR="90D"
 FULL_BACKUP_EVERY="30D"
 
-# Remove older files
+echo "REMOVE OLDER FILES:"
 duplicity \
  --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
  remove-older-than $KEEP_BACKUPS_FOR --force \
  b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 
-# Perform the backup, make a full backup if it's been over 30 days
+echo "PERFORM THE BACKUP:"
 duplicity \
  --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
  --full-if-older-than $FULL_BACKUP_EVERY \
  ${LOCAL_DIR} b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 
-# Cleanup failures
+echo "CLEANUP FAILURES:"
 duplicity \
  cleanup --force \
  --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
  b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 
-# Show collection-status
+echo "COLLECTION STATUS:"
 duplicity collection-status \
  --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
   b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
