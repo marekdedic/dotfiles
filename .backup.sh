@@ -29,6 +29,7 @@ duplicity \
 	backup \
 	--sign-key $SGN_KEY --encrypt-key $ENC_KEY \
 	--full-if-older-than $FULL_BACKUP_EVERY \
+	--exclude-filelist "$HOME/.backup-ignore" \
 	${LOCAL_DIR} b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 
 BACKUP_STATUS=$?
