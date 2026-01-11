@@ -26,32 +26,32 @@ FULL_BACKUP_EVERY="30D"
 
 echo ">> PERFORM THE BACKUP:"
 duplicity \
- backup \
- --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
- --full-if-older-than $FULL_BACKUP_EVERY \
- ${LOCAL_DIR} b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
+	backup \
+	--sign-key $SGN_KEY --encrypt-key $ENC_KEY \
+	--full-if-older-than $FULL_BACKUP_EVERY \
+	${LOCAL_DIR} b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 
 BACKUP_STATUS=$?
 
 if [ $BACKUP_STATUS -eq 0 ]; then
 	echo ">> REMOVE OLDER FILES:"
 	duplicity \
-	 remove-older-than $KEEP_BACKUPS_FOR --force \
-	 --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
-	 b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
+		remove-older-than $KEEP_BACKUPS_FOR --force \
+		--sign-key $SGN_KEY --encrypt-key $ENC_KEY \
+		b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 
 	echo ">> CLEANUP FAILURES:"
 	duplicity \
-	 cleanup --force \
-	 --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
-	 b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
+		cleanup --force \
+		--sign-key $SGN_KEY --encrypt-key $ENC_KEY \
+		b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 fi
 
 echo ">> COLLECTION STATUS:"
 duplicity \
- collection-status \
- --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
-  b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
+	collection-status \
+	--sign-key $SGN_KEY --encrypt-key $ENC_KEY \
+	b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 
 # Unset variables
 unset B2_KEY_ID
