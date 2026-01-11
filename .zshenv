@@ -24,8 +24,6 @@ alias vimdiff='nvim -d'
 alias nautilus='nohup nautilus . &>/dev/null &;disown'
 alias julia='julia --project'
 
-bindkey '^H' backward-kill-word # Ctrl-backspace
-
 export EDITOR=nvim
 export VISUAL=$EDITOR
 
