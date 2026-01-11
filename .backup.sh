@@ -26,12 +26,13 @@ FULL_BACKUP_EVERY="30D"
 
 echo "REMOVE OLDER FILES:"
 duplicity \
- --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
  remove-older-than $KEEP_BACKUPS_FOR --force \
+ --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
  b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 
 echo "PERFORM THE BACKUP:"
 duplicity \
+ backup \
  --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
  --full-if-older-than $FULL_BACKUP_EVERY \
  ${LOCAL_DIR} b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
@@ -43,7 +44,8 @@ duplicity \
  b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 
 echo "COLLECTION STATUS:"
-duplicity collection-status \
+duplicity \
+ collection-status \
  --sign-key $SGN_KEY --encrypt-key $ENC_KEY \
   b2://${B2_KEY_ID}:${B2_KEY}@${B2_BUCKET}/${B2_DIR}
 
