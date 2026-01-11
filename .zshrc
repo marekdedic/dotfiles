@@ -22,10 +22,11 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -U compinit; compinit
 
-### Ctrl+Left/Right to move by word
+### Ctrl+Left/Right/Backaspace
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey '^H' backward-kill-word
 
 ### History
 
