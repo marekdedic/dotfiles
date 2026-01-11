@@ -66,5 +66,9 @@ unset SIGN_PASSPHRASE
 unset KEEP_BACKUPS_FOR
 unset FULL_BACKUP_EVERY
 
-echo ">> BACKUP SUCCESSFUL"
+if [ $BACKUP_STATUS -eq 0 ]; then
+	echo ">> BACKUP SUCCESSFUL"
+else
+	echo ">> BACKUP FAILED"
+fi
 echo $(date)
