@@ -137,7 +137,7 @@ alias ll='eza --long --group --git'
 alias la='ll -a'
 
 # pnpm
-export PNPM_HOME="/home/personal/.local/share/pnpm"
+export PNPM_HOME="/home/marekdedic/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
