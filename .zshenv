@@ -16,8 +16,7 @@ alias up='
 	juliaup self update &&
 	juliaup update &&
 	pipx upgrade-all &&
-	uv tool upgrade --all &&
-	omz update'
+	uv tool upgrade --all'
 alias vi='nvim'
 alias vim='nvim'
 alias vimdiff='nvim -d'
