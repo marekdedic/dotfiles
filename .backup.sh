@@ -24,6 +24,7 @@ LOCAL_DIR=$HOME
 KEEP_BACKUPS_FOR="90D"
 FULL_BACKUP_EVERY="30D"
 
+echo $(date)
 echo ">> PERFORM THE BACKUP:"
 duplicity \
 	backup \
