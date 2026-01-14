@@ -34,3 +34,5 @@
 	autoSetupRemote = true
 [tag]
 	gpgSign = true
+[rerere]
+	enabled = true
