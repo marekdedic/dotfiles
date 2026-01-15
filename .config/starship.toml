@@ -9,7 +9,7 @@ $directory\
 $fill\
 [](fg:238)\
 [ $all](bg:238)\
-\n$character"""
+$character"""
 
 [directory]
 style = "bg:004"
@@ -17,6 +17,7 @@ format = "[ $path ]($style)"
 read_only = " 󰌾"
 truncation_length = 3
 truncation_symbol = "…/"
+home_symbol = ""
 
 [directory.substitutions]
 "Documents/git" = ""
@@ -36,6 +37,9 @@ symbol = " "
 
 [cmake]
 symbol = " "
+
+[cmd_duration]
+style = "bold yellow bg:238"
 
 [conda]
 symbol = " "
