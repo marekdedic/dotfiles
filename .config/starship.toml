@@ -77,18 +77,19 @@ symbol = " "
 [git_status]
 format = "[$all_status$ahead_behind]($style)"
 conflicted = "[${count}](fg:001 bg:238) "
-ahead = "${count} "
-behind = "${count} "
-diverged = "${ahead_count} ${behind_count} "
+ahead = "[${count}](fg:002 bg:238) "
+behind = "[${count}](fg:001 bg:238) "
+diverged = "[${ahead_count}](fg:002 bg:238) [${behind_count}](fg:001 bg:238) "
 untracked = "[${count}](fg:004 bg:238) "
-stashed = "${count} "
+stashed = "[${count}](fg:006 bg:238) "
 modified = "[${count}](fg:003 bg:238) "
-staged = "${count} "
-renamed = "➜${count} "
+staged = "[${count}](fg:002 bg:238) "
+renamed = "[➜${count}](fg:005 bg:238) "
 deleted = "[✘${count}](fg:001 bg:238) "
 style = "bold red bg:238"
 
 [git_commit]
+style = "bold green bg:238"
 tag_symbol = "  "
 
 [golang]
