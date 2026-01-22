@@ -1,5 +1,6 @@
 font-family = FiraCode Nerd Font
 font-size = 13
 keybind = ctrl+backspace=text:\x17
+maximize = true
 mouse-scroll-multiplier = 1
 theme = Cobalt2
