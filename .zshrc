@@ -42,23 +42,93 @@ zstyle ':completion:*' menu select
 
 setopt autocd
 
-### FZF
+### 1-parameter mv and cp
 
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+function mv() {
+  if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
+    command mv "$@"
+    return
+  fi
 
-### Double escape for sudo
+  newfilename="$1"
+  vared newfilename
+  command mv -v -- "$1" "$newfilename"
+}
+
+function cp() {
+  if [ "$#" -ne 1 ] || [ ! -e "$1" ]; then
+    command cp "$@"
+    return
+  fi
+
+  newfilename="$1"
+  vared newfilename
+  command cp -v -r -- "$1" "$newfilename"
+}
+
+### Double escape key toggles sudo
 
 source $HOME/.zsh_sudo
 
-### Zoxide
+### Use eza instead of ls
 
-eval "$(zoxide init zsh)"
-
-### These aliases need to be here, they get overriden in .zshenv
 alias ls='eza'
 alias ll='eza --long --group --git'
 alias la='ll -a'
+
+### Safe rm
+
+alias rm='trash'
+
+### Use NeoVim as default editor
+
+export EDITOR=nvim
+export VISUAL=$EDITOR
+alias vi='nvim'
+alias vim='nvim'
+alias vimdiff='nvim -d'
+
+# Suffix aliases
+alias -s {css,html,java,jl,js,json,latte,md,php,py,scala,scss,svelte,tex,ts,tsx,txt,vue}=vim
+
+### Zoxide initialization
+
+eval "$(zoxide init zsh)"
+
+# Configure Zoxide to use non-exact matching in interactive mode
+export _ZO_FZF_OPTS="--bind=ctrl-z:ignore,btab:up,tab:down --cycle --keep-right --border=sharp --height=45% --info=inline --layout=reverse --tabstop=2 --exit-0"
+
+### Fzf configuration (Ctrl+T fuzzy find)
+
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+
+### Always launch julia with project activated
+
+alias julia='julia --project'
+
+### Auto-detach nautilus
+
+alias nautilus='nohup nautilus . &>/dev/null &;disown'
+
+### Update everything
+
+alias up='
+	sudo apt-get update &&
+	sudo apt-get dist-upgrade -y &&
+	sudo apt-get autoremove -y &&
+	sudo apt-get autoclean &&
+	sudo npm -g update &&
+	$HOME/.tmux/plugins/tpm/bin/update_plugins all &&
+	vim -c "PlugUpgrade|PlugUpdate|execute \"TSUpdateSync\"|qa" &&
+	rustup update &&
+	cargo install-update -a &&
+	juliaup self update &&
+	juliaup update &&
+	pipx upgrade-all &&
+	uv tool upgrade --all'
 
 # >>> juliaup initialize >>>
 
