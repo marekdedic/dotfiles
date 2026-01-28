@@ -1,3 +1,6 @@
+set mirror:exclude-regex "^\..*\.swp$";
+alias ll 'ls --color'
+
 alias edit "source -e ~/.config/lftp/edit.sh"
 alias vim edit
 alias nvim edit

@@ -1,2 +1,0 @@
-set mirror:exclude-regex "^\..*\.swp$";
-alias ll 'ls --color'
