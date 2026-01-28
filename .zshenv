@@ -9,7 +9,6 @@ alias up='
 	sudo apt-get autoclean &&
 	sudo npm -g update &&
 	$HOME/.tmux/plugins/tpm/bin/update_plugins all &&
-	git -C $HOME/powerlevel10k pull &&
 	vim -c "PlugUpgrade|PlugUpdate|execute \"TSUpdateSync\"|qa" &&
 	rustup update &&
 	cargo install-update -a &&
