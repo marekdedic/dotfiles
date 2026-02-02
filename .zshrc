@@ -122,15 +122,27 @@ alias up='
     sudo apt-get autoremove -y &&
     sudo apt-get autoclean &&
   fi &&
-  sudo npm -g update &&
+  if command -v npm >/dev/null 2>&1; then
+    sudo npm -g update &&
+  fi &&
   $HOME/.tmux/plugins/tpm/bin/update_plugins all &&
   vim -c "PlugUpgrade|PlugUpdate|execute \"TSUpdateSync\"|qa" &&
-  rustup update &&
-  cargo install-update -a &&
-  juliaup self update &&
-  juliaup update &&
-  pipx upgrade-all &&
-  uv tool upgrade --all'
+  if command -v rustup >/dev/null 2>&1; then
+    rustup update &&
+  fi &&
+  if command -v cargo >/dev/null 2>&1; then
+    cargo install-update -a &&
+  fi &&
+  if command -v juliaup >/dev/null 2>&1; then
+    juliaup self update &&
+    juliaup update &&
+  fi &&
+  if command -v pipx >/dev/null 2>&1; then
+    pipx upgrade-all &&
+  fi &&
+  if command -v uv >/dev/null 2>&1; then
+    uv tool upgrade --all
+  fi'
 
 # >>> juliaup initialize >>>
 
