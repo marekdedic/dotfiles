@@ -116,10 +116,12 @@ alias nautilus='nohup nautilus . &>/dev/null &;disown'
 ### Update everything
 
 alias up='
-	sudo apt-get update &&
-	sudo apt-get dist-upgrade -y &&
-	sudo apt-get autoremove -y &&
-	sudo apt-get autoclean &&
+	if command -v apt-get >/dev/null 2>&1; then
+		sudo apt-get update &&
+		sudo apt-get dist-upgrade -y &&
+		sudo apt-get autoremove -y &&
+		sudo apt-get autoclean &&
+	fi &&
 	sudo npm -g update &&
 	$HOME/.tmux/plugins/tpm/bin/update_plugins all &&
 	vim -c "PlugUpgrade|PlugUpdate|execute \"TSUpdateSync\"|qa" &&
