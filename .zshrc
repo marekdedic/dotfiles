@@ -122,7 +122,7 @@ alias up='
     sudo apt-get autoremove -y &&
     sudo apt-get autoclean &&
   fi &&
-  if command -v npm >/dev/null 2>&1; then
+  if [ -w "$(npm config get prefix)" ] 2>/dev/null; then
     sudo npm -g update &&
   fi &&
   $HOME/.tmux/plugins/tpm/bin/update_plugins all &&
