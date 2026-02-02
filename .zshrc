@@ -116,21 +116,21 @@ alias nautilus='nohup nautilus . &>/dev/null &;disown'
 ### Update everything
 
 alias up='
-	if command -v apt-get >/dev/null 2>&1; then
-		sudo apt-get update &&
-		sudo apt-get dist-upgrade -y &&
-		sudo apt-get autoremove -y &&
-		sudo apt-get autoclean &&
-	fi &&
-	sudo npm -g update &&
-	$HOME/.tmux/plugins/tpm/bin/update_plugins all &&
-	vim -c "PlugUpgrade|PlugUpdate|execute \"TSUpdateSync\"|qa" &&
-	rustup update &&
-	cargo install-update -a &&
-	juliaup self update &&
-	juliaup update &&
-	pipx upgrade-all &&
-	uv tool upgrade --all'
+  if command -v apt-get >/dev/null 2>&1; then
+    sudo apt-get update &&
+    sudo apt-get dist-upgrade -y &&
+    sudo apt-get autoremove -y &&
+    sudo apt-get autoclean &&
+  fi &&
+  sudo npm -g update &&
+  $HOME/.tmux/plugins/tpm/bin/update_plugins all &&
+  vim -c "PlugUpgrade|PlugUpdate|execute \"TSUpdateSync\"|qa" &&
+  rustup update &&
+  cargo install-update -a &&
+  juliaup self update &&
+  juliaup update &&
+  pipx upgrade-all &&
+  uv tool upgrade --all'
 
 # >>> juliaup initialize >>>
 
