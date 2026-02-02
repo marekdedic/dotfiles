@@ -116,6 +116,7 @@ symbol = " "
 
 [hostname]
 ssh_symbol = " "
+style = "bold dimmed green bg:238"
 
 [java]
 symbol = " "
@@ -228,6 +229,10 @@ symbol = " "
 
 [swift]
 symbol = " "
+
+[username]
+style_root = "bold red bg:238"
+style_user = "bold yellow bg:238"
 
 [zig]
 symbol = " "
