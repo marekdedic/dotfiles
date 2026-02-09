@@ -29,6 +29,9 @@ home_symbol = ""
 [aws]
 symbol = "  "
 
+[[battery.display]]
+style = "red bold bg:238"
+
 [buf]
 symbol = " "
 
