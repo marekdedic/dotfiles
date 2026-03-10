@@ -6,18 +6,48 @@
     "*": "ask",
     "bash": {
       "*": "ask",
-      "find": "allow"
+      "awk *": "allow",
+      "cat *": "allow",
+      "cd *": "allow",
+      "find *": "allow",
+      "git diff *": "allow",
+      "git show *": "allow",
+      "grep *": "allow",
+      "head *": "allow",
+      "latexmk *": "allow",
+      "ls *": "allow",
+      "sed *": "allow",
+      "sort *": "allow",
+      "tail *": "allow",
+      "uniq *": "allow",
+      "wc *": "allow",
+      "which *": "allow"
     },
     "edit": {
       "*": "allow",
+      ".*": "ask",
       "*.env": "ask",
       "*.env.*": "ask"
     },
     "glob": "allow",
+    "grep": {
+      "*": "allow",
+      "*.env": "ask",
+      "*.env.*": "ask"
+    },
+    "list": "allow",
     "read": {
       "*": "allow",
       "*.env": "ask",
       "*.env.*": "ask"
-    }
+    },
+    "todoread": "allow",
+    "todowrite": "allow",
+    "write": {
+      "*": "allow",
+      ".*": "ask",
+      "*.env": "ask",
+      "*.env.*": "ask"
+    },
   }
 }
