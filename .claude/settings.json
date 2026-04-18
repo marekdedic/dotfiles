@@ -5,11 +5,22 @@
   },
   "permissions:": {
     "allow": [
+      "Bash(awk:*)",
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
       "Bash(grep:*)",
+      "Bash(head:*)",
       "Bash(latexmk:*)",
       "Bash(ls:*)",
       "Bash(npm test:*)",
-      "Bash(pnpm test:*)"
+      "Bash(pnpm test:*)",
+      "Bash(sed:*)",
+      "Bash(sort:*)",
+      "Bash(tail:*)",
+      "Bash(uniq:*)",
+      "Bash(wc:*)"
     ]
   }
 }
