@@ -1,0 +1,15 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "bash /home/marekdedic/.claude/statusline-command.sh"
+  },
+  "permissions:": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(latexmk:*)",
+      "Bash(ls:*)",
+      "Bash(npm test:*)",
+      "Bash(pnpm test:*)"
+    ]
+  }
+}
