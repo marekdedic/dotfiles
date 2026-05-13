@@ -2,7 +2,7 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
 
-Plug('nvim-treesitter/nvim-treesitter', {commit = '377039d', ['do'] = ':TSUpdate'}) -- Syntax highlighting
+Plug('nvim-treesitter/nvim-treesitter', {tag = 'v0.9.1', ['do'] = ':TSUpdate'}) -- Syntax highlighting
 vim.g.tex_flavor = "latex" -- Treat ".tex" files as LaTeX by default
 Plug('mg979/vim-visual-multi') -- Multiple cursors
 Plug('joom/latex-unicoder.vim') -- Ctrl-L converts latex code to actual symbols, as in \alpha -> α
@@ -23,14 +23,14 @@ Plug('coc-extensions/coc-svelte', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('fannheyward/coc-texlab', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('neoclide/coc-tsserver', {['do'] = 'yarn install --frozen-lockfile'})
 Plug('neoclide/coc-css', {['do'] = 'yarn install --frozen-lockfile'})
-vim.api.nvim_set_keymap('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "<CR><c-r>=coc#on_enter()<CR>"', {silent = true, expr = true}) -- Enter selects current suggestion
+vim.keymap.set('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "<CR><c-r>=coc#on_enter()<CR>"', {silent = true, expr = true}) -- Enter selects current suggestion
 vim.api.nvim_create_autocmd("CursorHold", {command = "silent call CocActionAsync('highlight')"}) -- Automatically highlight all occurences of symbol under cursor
-vim.cmd("hi Pmenu ctermfg=white guibg=darkmagenta") -- Fix floating menu colors
-vim.api.nvim_set_keymap('n', 'gd', '<Plug>(coc-definition)', {}) -- Go to definition
-vim.api.nvim_set_keymap('n', 'gt', '<Plug>(coc-type-definition)', {}) -- go to type definition
-vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', {}) -- Go to implementation
-vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', {}) -- Go to references
-vim.api.nvim_set_keymap('n', 'ft', ':call CocActionAsync("format")<CR>', {}) -- Format whole file
+vim.api.nvim_set_hl(0, 'Pmenu', {ctermfg = 'white', bg = 'darkmagenta'}) -- Fix floating menu colors
+vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', {}) -- Go to definition
+vim.keymap.set('n', 'gt', '<Plug>(coc-type-definition)', {}) -- go to type definition
+vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)', {}) -- Go to implementation
+vim.keymap.set('n', 'gr', '<Plug>(coc-references)', {}) -- Go to references
+vim.keymap.set('n', 'ft', ':call CocActionAsync("format")<CR>', {}) -- Format whole file
 
 -- Fix pyright workspace detection
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
@@ -45,9 +45,9 @@ vim.g.ale_disable_lsp = 1
 
 -- git changes next to line numbers
 Plug('airblade/vim-gitgutter')
-vim.api.nvim_command('highlight GitGutterAdd guifg=#009900 ctermfg=2')
-vim.api.nvim_command('highlight GitGutterChange guifg=#7BB2D9 ctermfg=4')
-vim.api.nvim_command('highlight GitGutterDelete guifg=#FF2222 ctermfg=1')
+vim.api.nvim_set_hl(0, 'GitGutterAdd', {fg = '#009900', ctermfg = 2})
+vim.api.nvim_set_hl(0, 'GitGutterChange', {fg = '#7BB2D9', ctermfg = 4})
+vim.api.nvim_set_hl(0, 'GitGutterDelete', {fg = '#FF2222', ctermfg = 1})
 vim.o.signcolumn = "yes"
 vim.g.gitgutter_sign_added = ''
 vim.g.gitgutter_sign_modified = ''
@@ -82,7 +82,7 @@ vim.g.slime_dont_ask_default = 1
 
 -- Fuzzy searching with Telescope
 Plug('nvim-lua/plenary.nvim')
-Plug('nvim-telescope/telescope.nvim', {tag = "0.1.3"})
+Plug('nvim-telescope/telescope.nvim', {tag = "0.1.8"})
 Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 Plug('kyazdani42/nvim-web-devicons')
 vim.keymap.set('n', '<C-T>', '<Cmd>lua project_files()<CR>', {}) -- Ctrl-T to pick by file name
