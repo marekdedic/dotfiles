@@ -2,7 +2,7 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
 
-Plug('nvim-treesitter/nvim-treesitter', {tag = 'v0.9.3', ['do'] = ':TSUpdate'}) -- Syntax highlighting
+Plug('nvim-treesitter/nvim-treesitter', {tag = 'v0.10.0', ['do'] = ':TSUpdate'}) -- Syntax highlighting
 vim.g.tex_flavor = "latex" -- Treat ".tex" files as LaTeX by default
 Plug('mg979/vim-visual-multi') -- Multiple cursors
 Plug('joom/latex-unicoder.vim') -- Ctrl-L converts latex code to actual symbols, as in \alpha -> α
@@ -82,7 +82,7 @@ vim.g.slime_dont_ask_default = 1
 
 -- Fuzzy searching with Telescope
 Plug('nvim-lua/plenary.nvim')
-Plug('nvim-telescope/telescope.nvim', {tag = "v0.1.9"})
+Plug('nvim-telescope/telescope.nvim', {tag = "v0.2.2"})
 Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 Plug('kyazdani42/nvim-web-devicons')
 vim.keymap.set('n', '<C-T>', '<Cmd>lua project_files()<CR>', {}) -- Ctrl-T to pick by file name
@@ -115,7 +115,8 @@ if vim.fn.has('persistent_undo') == 1 then
 end
 
 require('nvim-treesitter.configs').setup({
-  ensure_installed = "all", -- Installs all language parsers
+  ensure_installed = "all",
+  ignore_install = { "ipkg" },
   highlight = {
     enable = true
   }
