@@ -126,10 +126,10 @@ vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelp', { bg = custom.doc_bg, fg = c.whi
 vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpBorder', { bg = custom.doc_bg, fg = c.white })
 
 -- Underline diagnostics without changing text color
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { underline = true, sp = c.red })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { underline = true, sp = c.yellow })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { underline = true, sp = c.blue })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { underline = true, sp = c.grey })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { undercurl = true, sp = c.red })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { undercurl = true, sp = c.yellow })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { undercurl = true, sp = c.blue })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { undercurl = true, sp = c.grey })
 
 require('nvim-treesitter.configs').setup({
   ensure_installed = "all",
