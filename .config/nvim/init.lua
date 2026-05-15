@@ -2,6 +2,10 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
 
+-- Color scheme
+Plug('tjdevries/colorbuddy.nvim')
+Plug('lalitmee/cobalt2.nvim')
+
 Plug('nvim-treesitter/nvim-treesitter', {tag = 'v0.10.0', ['do'] = ':TSUpdate'}) -- Syntax highlighting
 vim.g.tex_flavor = "latex" -- Treat ".tex" files as LaTeX by default
 Plug('mg979/vim-visual-multi') -- Multiple cursors
@@ -24,9 +28,6 @@ Plug('mfussenegger/nvim-lint')
 
 -- git changes next to line numbers
 Plug('airblade/vim-gitgutter')
-vim.api.nvim_set_hl(0, 'GitGutterAdd', {fg = '#009900', ctermfg = 2})
-vim.api.nvim_set_hl(0, 'GitGutterChange', {fg = '#7BB2D9', ctermfg = 4})
-vim.api.nvim_set_hl(0, 'GitGutterDelete', {fg = '#FF2222', ctermfg = 1})
 vim.o.signcolumn = "yes"
 vim.g.gitgutter_sign_added = ''
 vim.g.gitgutter_sign_modified = ''
@@ -34,8 +35,7 @@ vim.g.gitgutter_sign_removed = ''
 vim.g.gitgutter_sign_removed_first_line = ''
 vim.g.gitgutter_sign_modified_removed = ''
 
--- Use terminal colors
-vim.o.termguicolors = false
+vim.o.termguicolors = true
 
 -- When breaking a line, start at the same indentation
 vim.o.breakindent = true
@@ -93,6 +93,43 @@ if vim.fn.has('persistent_undo') == 1 then
   vim.o.undodir = vim.fn.stdpath('data') .. '/undo'
 end
 
+-- Color scheme
+require('colorbuddy').colorscheme('cobalt2')
+require('cobalt2')
+
+local c = require('cobalt2.palette')
+local custom = {
+  bg = '#132738', -- Ghostty Cobalt2 background (overrides cobalt2.nvim's #193549)
+  doc_bg = '#1460d2', -- Ghostty ANSI blue (palette 4), not in cobalt2.nvim palette
+}
+
+-- Match Ghostty's Cobalt2 background
+vim.api.nvim_set_hl(0, 'Normal', { bg = custom.bg, fg = c.white })
+vim.api.nvim_set_hl(0, 'NormalNC', { bg = custom.bg, fg = c.white })
+vim.api.nvim_set_hl(0, 'LineNr', { bg = custom.bg, fg = c.light_grey })
+vim.api.nvim_set_hl(0, 'FoldColumn', { bg = custom.bg, fg = c.dark_grey })
+vim.api.nvim_set_hl(0, 'NonText', { bg = custom.bg, fg = c.dark_grey })
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = custom.bg, fg = c.blue })
+
+-- Git gutter colors
+vim.api.nvim_set_hl(0, 'GitGutterAdd', { fg = c.green, ctermfg = 2 })
+vim.api.nvim_set_hl(0, 'GitGutterChange', { fg = c.yellow, ctermfg = 4 })
+vim.api.nvim_set_hl(0, 'GitGutterDelete', { fg = c.red, ctermfg = 1 })
+
+-- Blink menu colors
+vim.api.nvim_set_hl(0, 'BlinkCmpMenu', { bg = c.darker_blue, fg = c.white })
+vim.api.nvim_set_hl(0, 'BlinkCmpMenuBorder', { bg = c.darker_blue, fg = c.white })
+vim.api.nvim_set_hl(0, 'BlinkCmpDoc', { bg = custom.doc_bg, fg = c.white })
+vim.api.nvim_set_hl(0, 'BlinkCmpDocBorder', { bg = custom.doc_bg, fg = c.white })
+vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelp', { bg = custom.doc_bg, fg = c.white })
+vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpBorder', { bg = custom.doc_bg, fg = c.white })
+
+-- Underline diagnostics without changing text color
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { underline = true, sp = c.red })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { underline = true, sp = c.yellow })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { underline = true, sp = c.blue })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { underline = true, sp = c.grey })
+
 require('nvim-treesitter.configs').setup({
   ensure_installed = "all",
   ignore_install = { "ipkg" },
@@ -139,14 +176,6 @@ require('blink.cmp').setup({
     default = { 'lsp', 'path', 'buffer' },
   },
 })
-
--- Fix blink menu colors
-vim.api.nvim_set_hl(0, 'BlinkCmpMenu',                { ctermbg = 8,  ctermfg = 15 })
-vim.api.nvim_set_hl(0, 'BlinkCmpMenuBorder',          { ctermbg = 8,  ctermfg = 15 })
-vim.api.nvim_set_hl(0, 'BlinkCmpDoc',                 { ctermbg = 4,  ctermfg = 15 })
-vim.api.nvim_set_hl(0, 'BlinkCmpDocBorder',           { ctermbg = 4,  ctermfg = 15 })
-vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelp',       { ctermbg = 4,  ctermfg = 15 })
-vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpBorder', { ctermbg = 4,  ctermfg = 15 })
 
 -- LSP management
 require('mason').setup()
@@ -198,12 +227,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- Additional linters not available as an LSP
 require('lint').linters_by_ft = {
-  sh   = { 'shellcheck' },
+  sh = { 'shellcheck' },
   bash = { 'shellcheck' },
-  zsh  = { 'shellcheck' },
+  zsh = { 'shellcheck' },
   yaml = { 'yamllint' },
-  css  = { 'stylelint' },
-  php  = { 'phpstan', 'phpcs', 'phpmd' },
+  css = { 'stylelint' },
+  php = { 'phpstan', 'phpcs', 'phpmd' },
 }
 vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost' }, {
   callback = function() require('lint').try_lint() end,
