@@ -17,7 +17,7 @@ vim.o.shiftwidth = 4
 Plug('neovim/nvim-lspconfig')
 Plug('mason-org/mason.nvim')
 Plug('mason-org/mason-lspconfig.nvim')
-Plug('saghen/blink.cmp', {tag = 'v1.10.2'})
+Plug('saghen/blink.cmp', {tag = 'v1.*'})
 
 -- Linting (only tools not available as a LSP)
 Plug('mfussenegger/nvim-lint')
