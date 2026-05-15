@@ -117,13 +117,7 @@ project_files = function() -- git_files picker with fallback to find_files when 
   if not ok then require'telescope.builtin'.find_files({}) end
 end
 
-
-vim.api.nvim_set_hl(0, 'BlinkCmpMenu',                { ctermbg = 8,  ctermfg = 15 })
-vim.api.nvim_set_hl(0, 'BlinkCmpMenuBorder',          { ctermbg = 8,  ctermfg = 15 })
-vim.api.nvim_set_hl(0, 'BlinkCmpDoc',                 { ctermbg = 4,  ctermfg = 15 })
-vim.api.nvim_set_hl(0, 'BlinkCmpDocBorder',           { ctermbg = 4,  ctermfg = 15 })
-vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelp',       { ctermbg = 4,  ctermfg = 15 })
-vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpBorder', { ctermbg = 4,  ctermfg = 15 })
+-- Completion
 require('blink.cmp').setup({
   completion = {
     documentation = {
@@ -146,6 +140,15 @@ require('blink.cmp').setup({
   },
 })
 
+-- Fix blink menu colors
+vim.api.nvim_set_hl(0, 'BlinkCmpMenu',                { ctermbg = 8,  ctermfg = 15 })
+vim.api.nvim_set_hl(0, 'BlinkCmpMenuBorder',          { ctermbg = 8,  ctermfg = 15 })
+vim.api.nvim_set_hl(0, 'BlinkCmpDoc',                 { ctermbg = 4,  ctermfg = 15 })
+vim.api.nvim_set_hl(0, 'BlinkCmpDocBorder',           { ctermbg = 4,  ctermfg = 15 })
+vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelp',       { ctermbg = 4,  ctermfg = 15 })
+vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpBorder', { ctermbg = 4,  ctermfg = 15 })
+
+-- LSP management
 require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = {
@@ -163,18 +166,6 @@ require('mason-lspconfig').setup({
 })
 
 vim.lsp.enable({ 'pyright', 'ruff', 'ts_ls', 'eslint', 'jsonls', 'cssls', 'intelephense', 'texlab', 'svelte', 'julials' })
-
-require('lint').linters_by_ft = {
-  sh   = { 'shellcheck' },
-  bash = { 'shellcheck' },
-  zsh  = { 'shellcheck' },
-  yaml = { 'yamllint' },
-  css  = { 'stylelint' },
-  php  = { 'phpstan', 'phpcs', 'phpmd' },
-}
-vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost' }, {
-  callback = function() require('lint').try_lint() end,
-})
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -203,4 +194,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     end
   end,
+})
+
+-- Additional linters not available as an LSP
+require('lint').linters_by_ft = {
+  sh   = { 'shellcheck' },
+  bash = { 'shellcheck' },
+  zsh  = { 'shellcheck' },
+  yaml = { 'yamllint' },
+  css  = { 'stylelint' },
+  php  = { 'phpstan', 'phpcs', 'phpmd' },
+}
+vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost' }, {
+  callback = function() require('lint').try_lint() end,
 })
