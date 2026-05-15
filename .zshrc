@@ -118,7 +118,7 @@ alias nautilus='nohup nautilus . &>/dev/null &;disown'
 alias up='
   if command -v apt-get >/dev/null 2>&1; then
     sudo apt-get update &&
-    sudo apt-get dist-upgrade -y &&
+    sudo apt-get full-upgrade -y &&
     sudo apt-get autoremove -y &&
     sudo apt-get autoclean &&
   fi &&
