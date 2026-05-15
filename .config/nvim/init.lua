@@ -59,6 +59,11 @@ vim.g.slime_target = "tmux"
 vim.g.slime_default_config = {socket_name = "default", target_pane = "{last}"}
 vim.g.slime_dont_ask_default = 1
 
+-- Enhanced UI for cmdline, messages, and notifications
+Plug('MunifTanjim/nui.nvim')
+Plug('rcarriga/nvim-notify')
+Plug('folke/noice.nvim')
+
 -- Fuzzy searching with Telescope
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim', {tag = "v0.2.2"})
@@ -74,9 +79,7 @@ Plug('fang2hou/blink-copilot')
 vim.call('plug#end')
 
 vim.o.laststatus = 2 -- Always show status line
-vim.o.cmdheight = 2 -- Status line accross 2 lines
 vim.o.mouse = 'a' -- Mouse click moves cursor
-vim.o.lazyredraw = true -- Faster macros
 vim.o.updatetime = 250 -- Time to recalculate git gutter and autosave after stopping typing (ms)
 vim.keymap.set('v', '<C-C>', '"+y', {}) -- Ctrl-C to copy to OS clipboard
 
@@ -137,6 +140,19 @@ require('nvim-treesitter.configs').setup({
   highlight = {
     enable = true
   }
+})
+
+require('noice').setup({
+  lsp = {
+    override = {
+      ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+      ['vim.lsp.util.stylize_markdown'] = true,
+    },
+  },
+  presets = {
+    command_palette = true,     -- cmdline and popup menu float together
+    long_message_to_split = true, -- long :messages go to a split instead of a pager
+  },
 })
 
 local actions = require('telescope.actions')
