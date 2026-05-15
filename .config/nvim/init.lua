@@ -19,10 +19,8 @@ Plug('mason-org/mason.nvim')
 Plug('mason-org/mason-lspconfig.nvim')
 Plug('saghen/blink.cmp', {tag = 'v1.10.2'})
 
--- Linters
-Plug('w0rp/ale')
-vim.g.ale_sign_column_always = 1
-vim.g.ale_disable_lsp = 1
+-- Linting (only tools not available as a LSP)
+Plug('mfussenegger/nvim-lint')
 
 -- git changes next to line numbers
 Plug('airblade/vim-gitgutter')
@@ -152,7 +150,9 @@ require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = {
     'pyright',
+    'ruff',
     'ts_ls',
+    'eslint',
     'jsonls',
     'julials',
     'cssls',
@@ -162,7 +162,19 @@ require('mason-lspconfig').setup({
   },
 })
 
-vim.lsp.enable({ 'pyright', 'ts_ls', 'jsonls', 'cssls', 'intelephense', 'texlab', 'svelte', 'julials' })
+vim.lsp.enable({ 'pyright', 'ruff', 'ts_ls', 'eslint', 'jsonls', 'cssls', 'intelephense', 'texlab', 'svelte', 'julials' })
+
+require('lint').linters_by_ft = {
+  sh   = { 'shellcheck' },
+  bash = { 'shellcheck' },
+  zsh  = { 'shellcheck' },
+  yaml = { 'yamllint' },
+  css  = { 'stylelint' },
+  php  = { 'phpstan', 'phpcs', 'phpmd' },
+}
+vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost' }, {
+  callback = function() require('lint').try_lint() end,
+})
 
 vim.diagnostic.config({
   virtual_text = true,
