@@ -13,30 +13,11 @@ vim.o.expandtab = false
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 
--- Code completion
-Plug('neoclide/coc.nvim', {branch = 'release', ['do'] = 'npm ci'})
-Plug('fannheyward/coc-julia', {['do'] = 'yarn install --frozen-lockfile'})
-Plug('neoclide/coc-json', {['do'] = 'yarn install --frozen-lockfile'})
-Plug('marlonfan/coc-phpls', {['do'] = 'yarn install --frozen-lockfile'})
-Plug('fannheyward/coc-pyright', {['do'] = 'yarn install --frozen-lockfile'})
-Plug('coc-extensions/coc-svelte', {['do'] = 'yarn install --frozen-lockfile'})
-Plug('fannheyward/coc-texlab', {['do'] = 'yarn install --frozen-lockfile'})
-Plug('neoclide/coc-tsserver', {['do'] = 'yarn install --frozen-lockfile'})
-Plug('neoclide/coc-css', {['do'] = 'yarn install --frozen-lockfile'})
-vim.keymap.set('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "<CR><c-r>=coc#on_enter()<CR>"', {silent = true, expr = true}) -- Enter selects current suggestion
-vim.api.nvim_create_autocmd("CursorHold", {command = "silent call CocActionAsync('highlight')"}) -- Automatically highlight all occurences of symbol under cursor
-vim.api.nvim_set_hl(0, 'Pmenu', {ctermfg = 'white', bg = 'darkmagenta'}) -- Fix floating menu colors
-vim.keymap.set('n', 'gd', '<Plug>(coc-definition)', {}) -- Go to definition
-vim.keymap.set('n', 'gt', '<Plug>(coc-type-definition)', {}) -- go to type definition
-vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)', {}) -- Go to implementation
-vim.keymap.set('n', 'gr', '<Plug>(coc-references)', {}) -- Go to references
-vim.keymap.set('n', 'ft', ':call CocActionAsync("format")<CR>', {}) -- Format whole file
-
--- Fix pyright workspace detection
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*.py"},
-  command = "let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv']",
-})
+-- LSP & completion
+Plug('neovim/nvim-lspconfig')
+Plug('mason-org/mason.nvim')
+Plug('mason-org/mason-lspconfig.nvim')
+Plug('saghen/blink.cmp', {tag = 'v1.10.2'})
 
 -- Linters
 Plug('w0rp/ale')
@@ -137,3 +118,77 @@ project_files = function() -- git_files picker with fallback to find_files when 
   local ok = pcall(require'telescope.builtin'.git_files, {})
   if not ok then require'telescope.builtin'.find_files({}) end
 end
+
+
+vim.api.nvim_set_hl(0, 'BlinkCmpMenu',                { ctermbg = 8,  ctermfg = 15 })
+vim.api.nvim_set_hl(0, 'BlinkCmpMenuBorder',          { ctermbg = 8,  ctermfg = 15 })
+vim.api.nvim_set_hl(0, 'BlinkCmpDoc',                 { ctermbg = 4,  ctermfg = 15 })
+vim.api.nvim_set_hl(0, 'BlinkCmpDocBorder',           { ctermbg = 4,  ctermfg = 15 })
+vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelp',       { ctermbg = 4,  ctermfg = 15 })
+vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpBorder', { ctermbg = 4,  ctermfg = 15 })
+require('blink.cmp').setup({
+  completion = {
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 500,
+    },
+    ghost_text = {
+      enabled = true,
+    },
+  },
+  keymap = {
+    preset = 'default',
+    ['<CR>'] = { 'select_and_accept', 'fallback' },
+  },
+  signature = {
+    enabled = true,
+  },
+  sources = {
+    default = { 'lsp', 'path', 'buffer' },
+  },
+})
+
+require('mason').setup()
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'pyright',
+    'ts_ls',
+    'jsonls',
+    'julials',
+    'cssls',
+    'intelephense',
+    'texlab',
+    'svelte',
+  },
+})
+
+vim.lsp.enable({ 'pyright', 'ts_ls', 'jsonls', 'cssls', 'intelephense', 'texlab', 'svelte', 'julials' })
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', 'ft', vim.lsp.buf.format, opts)
+
+    -- Highlight all occurences of symbol under cursor
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client and client.supports_method('textDocument/documentHighlight') then
+      local group = vim.api.nvim_create_augroup('lsp_highlight_' .. ev.buf, { clear = true })
+      vim.api.nvim_create_autocmd('CursorHold', {
+        buffer = ev.buf, group = group, callback = vim.lsp.buf.document_highlight,
+      })
+      vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+        buffer = ev.buf, group = group, callback = vim.lsp.buf.clear_references,
+      })
+    end
+  end,
+})

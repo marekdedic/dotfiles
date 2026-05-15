@@ -126,7 +126,7 @@ alias up='
     sudo npm -g update &&
   fi &&
   $HOME/.tmux/plugins/tpm/bin/update_plugins all &&
-  vim -c "PlugUpgrade|PlugUpdate|execute \"TSUpdateSync\"|qa" &&
+  nvim -c "PlugUpgrade|PlugUpdate|execute \"TSUpdateSync\"|MasonUpdate|qa" &&
   if command -v rustup >/dev/null 2>&1; then
     rustup update &&
   fi &&
