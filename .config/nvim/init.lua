@@ -222,6 +222,7 @@ require('mason-lspconfig').setup({
     'intelephense',
     'texlab',
     'svelte',
+    'lua_ls',
   },
 })
 
@@ -255,7 +256,19 @@ vim.lsp.config('ts_ls', {
   },
 })
 
-vim.lsp.enable({ 'basedpyright', 'ruff', 'ts_ls', 'eslint', 'jsonls', 'cssls', 'intelephense', 'texlab', 'svelte', 'julials' })
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+        checkThirdParty = false,
+      },
+    },
+  },
+})
+
+vim.lsp.enable({ 'basedpyright', 'ruff', 'ts_ls', 'eslint', 'jsonls', 'cssls', 'intelephense', 'texlab', 'svelte', 'julials', 'lua_ls' })
 
 vim.diagnostic.config({
   virtual_text = true,
