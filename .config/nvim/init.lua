@@ -212,7 +212,7 @@ require('copilot').setup({
 require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = {
-    'pyright',
+    'basedpyright',
     'ruff',
     'ts_ls',
     'eslint',
@@ -225,7 +225,37 @@ require('mason-lspconfig').setup({
   },
 })
 
-vim.lsp.enable({ 'pyright', 'ruff', 'ts_ls', 'eslint', 'jsonls', 'cssls', 'intelephense', 'texlab', 'svelte', 'julials' })
+vim.lsp.config('basedpyright', {
+  settings = {
+    basedpyright = {
+      analysis = {
+        inlayHints = {
+          variableTypes = true,
+          returnTypes = true,
+          callArgumentNames = true,
+          genericTypes = true,
+          pytestParameters = true,
+        },
+      },
+    },
+  },
+})
+
+vim.lsp.config('ts_ls', {
+  init_options = {
+    preferences = {
+      includeInlayParameterNameHints = 'all',
+      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+    },
+  },
+})
+
+vim.lsp.enable({ 'basedpyright', 'ruff', 'ts_ls', 'eslint', 'jsonls', 'cssls', 'intelephense', 'texlab', 'svelte', 'julials' })
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -242,8 +272,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', 'ft', vim.lsp.buf.format, opts)
 
-    -- Highlight all occurences of symbol under cursor
+    -- Inlay hints
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client and client.supports_method('textDocument/inlayHint') then
+      vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+    end
+
+    -- Highlight all occurences of symbol under cursor
     if client and client.supports_method('textDocument/documentHighlight') then
       local group = vim.api.nvim_create_augroup('lsp_highlight_' .. ev.buf, { clear = true })
       vim.api.nvim_create_autocmd('CursorHold', {
