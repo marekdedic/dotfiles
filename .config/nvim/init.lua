@@ -68,7 +68,8 @@ vim.keymap.set('n', '<C-T>', '<Cmd>lua project_files()<CR>', {}) -- Ctrl-T to pi
 vim.keymap.set('n', '<C-G>', '<Cmd>Telescope live_grep<CR>', {}) -- Ctrl-G to pick by file contents
 
 -- Copilot autocompletion
-Plug('github/copilot.vim')
+Plug('zbirenbaum/copilot.lua')
+Plug('fang2hou/blink-copilot')
 
 vim.call('plug#end')
 
@@ -173,8 +174,22 @@ require('blink.cmp').setup({
     enabled = true,
   },
   sources = {
-    default = { 'lsp', 'path', 'buffer' },
+    default = { 'lsp', 'path', 'buffer', 'copilot' },
+    providers = {
+      copilot = {
+        name = 'copilot',
+        module = 'blink-copilot',
+        score_offset = 100,
+        async = true,
+      },
+    },
   },
+})
+
+-- Copilot is routed through blink-copilot, so disable its default suggestion and panel windows
+require('copilot').setup({
+  suggestion = { enabled = false },
+  panel = { enabled = false },
 })
 
 -- LSP management
