@@ -184,7 +184,7 @@ require('blink.cmp').setup({
   },
   keymap = {
     preset = 'default',
-    ['<CR>'] = { 'select_and_accept', 'fallback' },
+    ['<Tab>'] = { 'select_and_accept', 'fallback' },
   },
   signature = {
     enabled = true,
