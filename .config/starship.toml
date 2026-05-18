@@ -26,6 +26,11 @@ home_symbol = ""
 "Music" = ""
 "Pictures" = ""
 
+[jobs]
+style = "bold bright-yellow"
+symbol = "⏸ "
+format = "[$symbol$number ]($style)"
+
 [aws]
 symbol = "  "
 
