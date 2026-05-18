@@ -14,6 +14,7 @@ autoload -U compinit; compinit
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey '^?' backward-delete-char
 bindkey '^H' backward-kill-word
 
 ### History
