@@ -113,7 +113,8 @@ vim.api.nvim_set_hl(0, 'NormalNC', { bg = custom.bg, fg = c.white })
 vim.api.nvim_set_hl(0, 'LineNr', { bg = custom.bg, fg = c.light_grey })
 vim.api.nvim_set_hl(0, 'FoldColumn', { bg = custom.bg, fg = c.dark_grey })
 vim.api.nvim_set_hl(0, 'NonText', { bg = custom.bg, fg = c.dark_grey })
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = custom.bg, fg = c.blue })
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = c.darker_blue, fg = c.white })
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = c.darker_blue, fg = c.blue })
 
 -- Git gutter colors
 vim.api.nvim_set_hl(0, 'GitGutterAdd', { fg = c.green, ctermfg = 2 })
@@ -274,6 +275,13 @@ vim.diagnostic.config({
   virtual_text = true,
   signs = true,
   underline = true,
+})
+
+-- Show full diagnostic message in a float when the cursor rests on an error
+vim.api.nvim_create_autocmd('CursorHold', {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false, scope = 'cursor', border = 'rounded' })
+  end,
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
