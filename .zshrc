@@ -149,8 +149,10 @@ alias up='
 
 # !! Contents within this block are managed by juliaup !!
 
-path=("$HOME/.juliaup/bin" $path)
+path=('/home/marekdedic/.juliaup/bin' $path)
 export PATH
+# Tab completion for juliaup and julia channel selection
+[ -f "/home/marekdedic/.julia/juliaup/completions/zsh.zsh" ] && source "/home/marekdedic/.julia/juliaup/completions/zsh.zsh"
 
 # <<< juliaup initialize <<<
 
