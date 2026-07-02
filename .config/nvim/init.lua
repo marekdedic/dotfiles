@@ -78,7 +78,6 @@ Plug('fang2hou/blink-copilot')
 
 vim.call('plug#end')
 
-vim.o.laststatus = 2 -- Always show status line
 vim.o.mouse = 'a' -- Mouse click moves cursor
 vim.o.updatetime = 250 -- Time to recalculate git gutter and autosave after stopping typing (ms)
 vim.keymap.set('v', '<C-C>', '"+y', {}) -- Ctrl-C to copy to OS clipboard
@@ -92,10 +91,8 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 
 -- Undo history is not erased when vim is closed
-if vim.fn.has('persistent_undo') == 1 then
-  vim.o.undofile = true
-  vim.o.undodir = vim.fn.stdpath('data') .. '/undo'
-end
+vim.o.undofile = true
+vim.o.undodir = vim.fn.stdpath('data') .. '/undo'
 
 -- Color scheme
 require('colorbuddy').colorscheme('cobalt2')
