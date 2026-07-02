@@ -27,5 +27,6 @@
       "Bash(uv sync:*)",
       "Bash(wc:*)"
     ]
-  }
+  },
+  "tui": "fullscreen"
 }
