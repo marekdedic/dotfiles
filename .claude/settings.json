@@ -25,6 +25,8 @@
       "Bash(tail:*)",
       "Bash(uniq:*)",
       "Bash(uv sync:*)",
+      "Bash(uv run basedpyright:*)",
+      "Bash(uv run ruff:*)",
       "Bash(wc:*)"
     ]
   },
