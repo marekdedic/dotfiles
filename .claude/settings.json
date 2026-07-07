@@ -3,6 +3,7 @@
     "type": "command",
     "command": "bash /home/marekdedic/.claude/statusline-command.sh"
   },
+  "tui": "fullscreen",
   "permissions:": {
     "allow": [
       "Bash(awk:*)",
@@ -14,6 +15,7 @@
       "Bash(grep:*)",
       "Bash(head:*)",
       "Bash(latexmk:*)",
+      "Bash(latexmk -f:*)",
       "Bash(ls:*)",
       "Bash(npm ci:*)",
       "Bash(npm run lint:*)",
@@ -29,6 +31,5 @@
       "Bash(uv run ruff:*)",
       "Bash(wc:*)"
     ]
-  },
-  "tui": "fullscreen"
+  }
 }
