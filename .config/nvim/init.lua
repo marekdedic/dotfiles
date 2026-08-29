@@ -140,6 +140,10 @@ require('nvim-treesitter.configs').setup({
   }
 })
 
+require('notify').setup({
+  background_colour = custom.bg, -- noice/notify needs an explicit colour for transparent parts
+})
+
 require('noice').setup({
   lsp = {
     override = {
