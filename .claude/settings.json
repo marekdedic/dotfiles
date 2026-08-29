@@ -1,8 +1,10 @@
 {
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "bash /home/marekdedic/.claude/statusline-command.sh"
   },
+  "effortLevel": "low",
   "tui": "fullscreen",
   "permissions:": {
     "allow": [
