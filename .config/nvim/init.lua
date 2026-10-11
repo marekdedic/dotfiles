@@ -78,6 +78,10 @@ Plug('fang2hou/blink-copilot')
 
 vim.call('plug#end')
 
+vim.o.autoread = true -- Automatically reload files changed outside of vim
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  command = "if mode() != 'c' | checktime | endif",
+}) -- Actually check for outside changes so autoread can trigger
 vim.o.mouse = 'a' -- Mouse click moves cursor
 vim.o.updatetime = 250 -- Time to recalculate git gutter and autosave after stopping typing (ms)
 vim.keymap.set('v', '<C-C>', '"+y', {}) -- Ctrl-C to copy to OS clipboard
