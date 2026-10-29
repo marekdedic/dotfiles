@@ -8,3 +8,4 @@
 - When asked to draft or open an issue, always look for issue templates first and conform to the appropriate template if present.
 - When asked to draft or open an issue on a repo that isn't the current working repo, never submit without explicit approval.
 - When asked to draft release notes, prefer a terse, structured output. Base the release notes on commits and PRs since the last release. Only include consumer-facing changes, do not include internal changes. Output a markdown source.
+- When working on a PR that only I worked on, keep the commit history clean and logical.
