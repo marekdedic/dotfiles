@@ -81,6 +81,10 @@ alias la='ll -a'
 
 alias rm='trash'
 
+### Ghostty for ssh
+
+alias ssh='ghostty +ssh --'
+
 ### Use NeoVim as default editor
 
 export EDITOR=nvim
