@@ -306,12 +306,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Inlay hints
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client and client.supports_method('textDocument/inlayHint') then
+    if client and client:supports_method('textDocument/inlayHint') then
       vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
     end
 
     -- Highlight all occurences of symbol under cursor
-    if client and client.supports_method('textDocument/documentHighlight') then
+    if client and client:supports_method('textDocument/documentHighlight') then
       local group = vim.api.nvim_create_augroup('lsp_highlight_' .. ev.buf, { clear = true })
       vim.api.nvim_create_autocmd('CursorHold', {
         buffer = ev.buf, group = group, callback = vim.lsp.buf.document_highlight,
