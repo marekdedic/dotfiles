@@ -1,3 +1,8 @@
+-- Disable unused remote plugin providers (no Node/Perl/Ruby plugins in use)
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
