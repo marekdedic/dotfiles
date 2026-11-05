@@ -327,5 +327,12 @@ require('lint').linters_by_ft = {
   php = { 'phpstan', 'phpcs', 'phpmd' },
 }
 vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost' }, {
-  callback = function() require('lint').try_lint() end,
+  callback = function()
+    local lint = require('lint')
+    -- Only run linters whose executable is installed
+    -- Missing linters are listed by :checkhealth lint_status
+    local names = vim.tbl_filter(require('lint_status').available,
+      lint._resolve_linter_by_ft(vim.bo.filetype))
+    lint.try_lint(names)
+  end,
 })
