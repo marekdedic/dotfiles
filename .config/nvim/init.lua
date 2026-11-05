@@ -122,6 +122,12 @@ vim.api.nvim_set_hl(0, 'GitGutterAdd', { fg = c.green, ctermfg = 2 })
 vim.api.nvim_set_hl(0, 'GitGutterChange', { fg = c.yellow, ctermfg = 4 })
 vim.api.nvim_set_hl(0, 'GitGutterDelete', { fg = c.red, ctermfg = 1 })
 
+-- Diff colors: background tints instead of cobalt2.nvim's foreground-only (and identical add/change) colors
+vim.api.nvim_set_hl(0, 'DiffAdd', { bg = c.darkest_green })
+vim.api.nvim_set_hl(0, 'DiffChange', { bg = c.subtle_bg })
+vim.api.nvim_set_hl(0, 'DiffText', { bg = c.dark_purple, bold = true })
+vim.api.nvim_set_hl(0, 'DiffDelete', { bg = c.aubergine, fg = c.dark_red })
+
 -- Blink menu colors
 vim.api.nvim_set_hl(0, 'BlinkCmpMenu', { bg = c.darker_blue, fg = c.white })
 vim.api.nvim_set_hl(0, 'BlinkCmpMenuBorder', { bg = c.darker_blue, fg = c.white })
